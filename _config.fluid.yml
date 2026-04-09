@@ -1,0 +1,64 @@
+#---------------------------
+# Hexo Theme Fluid - 覆盖配置
+#---------------------------
+
+# 全局
+favicon: /img/fluid.png
+
+# 首页
+index:
+  banner_img: /img/bg.jpg
+  slogan: "📚 课堂笔记 & YouTube 技术分析"
+  subtitle: "专注于游戏开发、C# 和渲染技术的学习记录"
+
+# 导航栏
+navbar:
+  blog_title: 我的笔记
+  menu:
+    - { key: "首页", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "书籍", link: "/categories/书籍/", icon: "iconfont icon-book" }
+    - { key: "代码库", link: "/categories/代码库/", icon: "iconfont icon-code" }
+    - { key: "视频", link: "/categories/视频/", icon: "iconfont icon-video" }
+
+# 页脚
+footer:
+  content: |
+    <div>
+    <p>© 2026 我的笔记</p>
+    </div>
+
+# 文章
+post:
+  banner_img: /img/default_banner.png
+  index:
+    enable: true
+    index_nav: true
+    default_index: true
+
+# 本地搜索
+search:
+  enable: true
+  preload: false
+
+# 暗色模式
+dark_mode:
+  enable: true
+  default: auto
+
+# 字体
+font:
+  enable: false
+
+# 代码块
+code:
+  copy_btn: true
+  language:
+    enable: true
+    default: "TEXT"
+  highlight:
+    enable: true
+    line_number: true
+    lib: "highlightjs"
+    highlightjs:
+      style: "github gist"
+      style_dark: "dark"
