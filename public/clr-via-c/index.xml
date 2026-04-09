@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Clr-via-Cs on 我的笔记</title>
+    <link>http://localhost:1313/Notes/clr-via-c/</link>
+    <description>Recent content in Clr-via-Cs on 我的笔记</description>
+    <image>
+      <title>我的笔记</title>
+      <url>http://localhost:1313/Notes/</url>
+      <link>http://localhost:1313/Notes/</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/Notes/clr-via-c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CLR Chapter 2-1 - Building &amp; Packaging</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter2-1_building_packaging_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter2-1_building_packaging_note/</guid>
+      <description>**日期**: 2026-03-30</description>
+    </item>
+    <item>
+      <title>CLR Chapter 2-2 - Building &amp; Packaging</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter2-2_building_packaging_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter2-2_building_packaging_note/</guid>
+      <description>**Assembly Linker、版本管理、文化与私有部署**</description>
+    </item>
+    <item>
+      <title>CLR Chapter 3 - Shared Assemblies</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter3_shared_assemblies_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter3_shared_assemblies_note/</guid>
+      <description>---</description>
+    </item>
+    <item>
+      <title>CLR Chapter 4 - Type Fundamentals</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter4_type_fundamentals_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter4_type_fundamentals_note/</guid>
+      <description>**日期**：2026-03-30</description>
+    </item>
+    <item>
+      <title>CLR Chapter 5-1 - Primitive, Reference, Value Types</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter5-1_primitive_reference_value_types_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter5-1_primitive_reference_value_types_note/</guid>
+      <description>**日期**: 2026-03-30</description>
+    </item>
+    <item>
+      <title>CLR Chapter 5-2 - Boxing</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter5-2_boxing_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter5-2_boxing_note/</guid>
+      <description>**日期**：2026-03-31</description>
+    </item>
+    <item>
+      <title>CLR Chapter 5-3 - Dynamic</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter5-3_dynamic_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter5-3_dynamic_note/</guid>
+      <description>**日期**: 2026-03-31</description>
+    </item>
+    <item>
+      <title>CLR Chapter 6 - Type and Member Basics</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter6_type_and_member_basics_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter6_type_and_member_basics_note/</guid>
+      <description>&amp;gt; 日期: 2026-03-31</description>
+    </item>
+    <item>
+      <title>CLR Chapter 8-1 - Constructors</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter8-1_constructors_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter8-1_constructors_note/</guid>
+      <description>**日期**: 2026-04-01</description>
+    </item>
+    <item>
+      <title>CLR Chapter 8-2 - Special Methods</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter8-2_special_methods_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter8-2_special_methods_note/</guid>
+      <description>**日期**：2026-04-02</description>
+    </item>
+    <item>
+      <title>CLR Chapter 9 - Parameters</title>
+      <link>http://localhost:1313/Notes/clr-via-c/clr_chapter9_parameters_note/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/Notes/clr-via-c/clr_chapter9_parameters_note/</guid>
+      <description>**日期**: 2026-04-03</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,147 @@
+baseURL: https://shiwenbot.github.io/Notes/
+language: zh
+title: 我的笔记
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+googleAnalytics: ""
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production
+  title: 我的笔记
+  description: "课堂笔记 & YouTube 技术分析"
+  keywords: [笔记, 学习, 技术]
+  author: shiwenbot
+  # author: ["Me", "You"] # multiple authors
+
+  images: [""]
+
+  DateFormat: "2006-01-02"
+  defaultTheme: auto
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "<path / ext url or protocol>"
+    favicon16x16: "<path / ext url or protocol>"
+    favicon32x32: "<path / ext url or protocol>"
+    apple_touch_icon: "<path / ext url or protocol>"
+    safari_pinned_tab: "<path / ext url or protocol>"
+
+  label:
+    text: "首页"
+    icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: false # needs to be explicitly set
+    title: 我的笔记
+    subtitle: "课堂笔记 & YouTube 技术分析"
+    imageUrl: "<avatar image path>"
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: my image
+    buttons:
+      - name: Archives
+        url: archives
+      - name: Tags
+        url: tags
+
+  # home-info mode
+  homeInfoParams:
+    Title: "📝 我的笔记"
+    Content: "课堂笔记 & YouTube 技术分析"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/shiwenbot/Notes"
+
+  analytics:
+    google:
+      SiteVerificationTag: "XYZabc"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages but not in single pages
+    hiddenInSingle: true # hide on single pages
+
+  editPost:
+    URL: "https://github.com/shiwenbot/Notes/tree/main/content"
+    Text: "建议修改" # edit text
+    appendFilePath: true # to append file path to edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    - identifier: home
+      name: 首页
+      url: /
+      weight: 1
+    - identifier: clr
+      name: CLR via C#
+      url: /categories/clr-via-c/
+      weight: 2
+    - identifier: direct3d
+      name: Direct3D
+      url: /categories/direct3d/
+      weight: 3
+    - identifier: moba
+      name: ET MOBA
+      url: /categories/et-moba/
+      weight: 4
+    - identifier: youtube
+      name: YouTube 分析
+      url: /categories/youtube-analysis/
+      weight: 5
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 6
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 7
+
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/Features#search
+# https://fusejs.io/api/options.html
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
