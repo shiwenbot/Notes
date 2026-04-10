@@ -44,6 +44,7 @@ navbar:
     - { key: "书籍", link: "/categories/书籍/", icon: "iconfont icon-book" }
     - { key: "代码库", link: "/categories/代码库/", icon: "iconfont icon-code" }
     - { key: "视频", link: "/categories/视频/", icon: "iconfont icon-video" }
+    - { key: "文章", link: "/categories/文章/", icon: "iconfont icon-file-text" }
 
 # 首页
 index:
