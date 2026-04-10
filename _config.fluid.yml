@@ -24,10 +24,7 @@ code:
 # 打字机效果
 fun_features:
   typing:
-    enable: true
-    typeSpeed: 70
-    cursorChar: "_"
-    loop: false
+    enable: false
 
 # 主题色
 theme_color:
@@ -41,9 +38,7 @@ theme_color:
 
 # 顶部导航栏
 navbar:
-  blog_title:
-    enable: true
-    title: "我的笔记"
+  blog_title: "我的笔记"
   menu:
     - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
     - { key: "书籍", link: "/categories/书籍/", icon: "iconfont icon-book" }

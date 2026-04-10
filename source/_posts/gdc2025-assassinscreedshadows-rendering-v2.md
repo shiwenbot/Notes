@@ -5,7 +5,7 @@ categories:
   - 视频
 tags:
   - YouTube
-description: "> **元信息**：GDC 2025 | 时长约 62 分钟 | 演讲者：Nicolas Lopez (Ubisoft)"
+description: "GDC 2025 Assassin's Creed Shadows 渲染技术分析 v2"
 ---
 
 > **元信息**：GDC 2025 | 时长约 62 分钟 | 演讲者：Nicolas Lopez (Ubisoft)
