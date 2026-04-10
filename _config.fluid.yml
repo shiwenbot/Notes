@@ -1,53 +1,11 @@
-#---------------------------
-# Hexo Theme Fluid - 覆盖配置
-#---------------------------
+# Hexo Theme Fluid Config
+# 参考 https://alex-rachel.github.io/ 的风格
 
 # 全局
-favicon: /img/fluid.png
-
-# 首页
-index:
-  banner_img: /img/bg.jpg
-  slogan: "📚 课堂笔记 & YouTube 技术分析"
-  subtitle: "专注于游戏开发、C# 和渲染技术的学习记录"
-
-# 导航栏
-navbar:
-  blog_title: 我的笔记
-  menu:
-    - { key: "首页", link: "/", icon: "iconfont icon-home-fill" }
-    - { key: "书籍", link: "/categories/书籍/", icon: "iconfont icon-book" }
-    - { key: "代码库", link: "/categories/代码库/", icon: "iconfont icon-code" }
-    - { key: "视频", link: "/categories/视频/", icon: "iconfont icon-video" }
-
-# 页脚
-footer:
-  content: |
-    <div>
-    <p>© 2026 我的笔记</p>
-    </div>
-
-# 文章
-post:
-  banner_img: /img/default_banner.png
-  index:
-    enable: true
-    index_nav: true
-    default_index: true
-
-# 本地搜索
-search:
-  enable: true
-  preload: false
-
-# 暗色模式
-dark_mode:
-  enable: true
-  default: auto
-
-# 字体
-font:
-  enable: false
+favicon: /img/favicon.png
+apple_touch_icon: /img/favicon.png
+tab_title_separator: " - "
+force_https: false
 
 # 代码块
 code:
@@ -62,3 +20,75 @@ code:
     highlightjs:
       style: "github gist"
       style_dark: "dark"
+
+# 打字机效果
+fun_features:
+  typing:
+    enable: true
+    typeSpeed: 70
+    cursorChar: "_"
+    loop: false
+
+# 主题色
+theme_color:
+  enable: true
+  main: "#49b1f5"
+  paginator: "#00c4b6"
+  button_hover: "#ff7242"
+  text_selection: "#00c4b6"
+  link_color: "#99a9bf"
+  hr_color: "#a4d8fa"
+
+# 顶部导航栏
+navbar:
+  blog_title:
+    enable: true
+    title: "我的笔记"
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "书籍", link: "/categories/书籍/", icon: "iconfont icon-book" }
+    - { key: "代码库", link: "/categories/代码库/", icon: "iconfont icon-code" }
+    - { key: "视频", link: "/categories/视频/", icon: "iconfont icon-video" }
+
+# 首页
+index:
+  banner_img: /img/default.png
+  slogan:
+    enable: true
+    text: "课堂笔记 & YouTube 技术分析"
+
+# 文章页
+post:
+  banner_img: /img/default.png
+  default_top_img: false
+
+# 侧边栏
+sidebar:
+  left:
+    enable: true
+  right:
+    enable: true
+    sticky: true
+
+# 评论（暂时关闭）
+comments:
+  enable: false
+
+# 统计（暂时关闭）
+statistics:
+  enable: false
+
+# 暗色模式
+dark_mode:
+  enable: true
+  default: "auto"
+
+# 关于页
+about:
+  avatar: /img/avatar.png
+  name: "shiwenbot"
+  intro: "课堂笔记 & YouTube 技术分析"
+
+# 自定义字体
+font:
+  enable: false
