@@ -51,7 +51,7 @@ index:
   banner_img: /img/default.png
   slogan:
     enable: true
-    text: "课堂笔记 & YouTube 技术分析"
+    text: "造个绿洲玩玩"
 
 # 文章页
 post:
@@ -83,7 +83,7 @@ dark_mode:
 about:
   avatar: /img/avatar.png
   name: "shiwenbot"
-  intro: "课堂笔记 & YouTube 技术分析"
+  intro: "造个绿洲玩玩"
 
 # 自定义字体
 font:
