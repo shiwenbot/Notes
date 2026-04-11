@@ -2,12 +2,9 @@
 title: "Chapter 2 - ET 框架核心机制"
 date: 2026-04-11
 categories:
-  - 文章
+  - 代码库
 tags:
-  - MOBA
-  - Unity
-  - GamePlay
-  - ET框架
+  - ET MOBA
 description: "ET框架核心机制：Entity-Component组合、EventSystem生命周期驱动、Game单例全局管理、Scene与Domain、双队列模式、组合式vs继承式设计权衡"
 ---
 
