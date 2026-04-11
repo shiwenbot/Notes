@@ -1,11 +1,11 @@
 ---
-title: "MOBA Chapter 1"
+title: "MOBA Chapter 1 - 项目概述与三层架构"
 date: 2026-04-07
 categories:
   - 代码库
 tags:
   - ET MOBA
-description: "**日期**：2026-04-07"
+description: "ET框架项目概述：CS代码共享、三层架构（Model/Hotfix/ModelView）、Link机制、条件编译"
 ---
 
 **日期**：2026-04-07

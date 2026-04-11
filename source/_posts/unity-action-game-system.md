@@ -2,9 +2,8 @@
 title: "Unity动作游戏系统学习笔记"
 date: 2026-04-11
 categories:
-  - 文章
+  - 代码库
 tags:
-  - MOBA
   - Unity
   - GamePlay
   - 帧同步

@@ -1,11 +1,11 @@
 ---
-title: "GDC2025: Assassin's Creed Shadows 渲染技术 (v3)"
+title: "GDC2025: Assassin's Creed Shadows 渲染技术"
 date: 2026-04-08
 categories:
   - 视频
 tags:
-  - YouTube
-description: "GDC 2025 Assassin's Creed Shadows 渲染技术分析 v3"
+  - GDC
+description: "GDC 2025 Assassin's Creed Shadows 渲染技术分析"
 ---
 
 > **元信息**：GDC 2025 | 时长 ~62 min | 演讲者：Nicolas Lopez (Ubisoft)
