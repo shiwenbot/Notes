@@ -2,7 +2,7 @@
 title: "Chapter 4 - 锁步帧同步（LSF）"
 date: 2026-04-12
 categories:
-  - 文章
+  - 代码库
 tags:
   - MOBA
   - Unity
