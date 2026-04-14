@@ -2,7 +2,7 @@
 title: "第11章：综合实战——从示例中学习"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "从简单示例到复杂系统的递进实战"

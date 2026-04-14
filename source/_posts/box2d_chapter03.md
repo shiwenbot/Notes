@@ -2,7 +2,7 @@
 title: "第3章：刚体系统——Body 的三种类型"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "Static/Kinematic/Dynamic三种刚体的本质区别与应用场景"

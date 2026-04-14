@@ -2,7 +2,7 @@
 title: "第9章：调试与可视化"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "Box2DSharp调试渲染抽象层与可视化对接"

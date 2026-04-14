@@ -2,7 +2,7 @@
 title: "第1章：快速入门——从零开始的物理世界"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "Box2DSharp 四步工作流、Def模式、ID系统、刚体类型、Step函数与ShapeDef属性"

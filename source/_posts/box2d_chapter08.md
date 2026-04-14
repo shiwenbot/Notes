@@ -2,7 +2,7 @@
 title: "第8章：传感器——无形之眼"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "Sensor传感器机制，无形碰撞检测与区域感知"

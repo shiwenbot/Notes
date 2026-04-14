@@ -2,7 +2,7 @@
 title: "第6章：接触与事件——碰撞发生之后"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "碰撞响应与碰撞通知，接触事件处理机制"

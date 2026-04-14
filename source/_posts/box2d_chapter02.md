@@ -2,7 +2,7 @@
 title: "第2章：物理世界详解——World 与 WorldDef"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "World容器与指挥中心、WorldDef配置、重力与时间步长"

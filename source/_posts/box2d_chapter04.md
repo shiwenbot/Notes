@@ -2,7 +2,7 @@
 title: "第4章：形状系统——给刚体穿上碰撞外衣"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "Shape碰撞边界、质量分布、表面属性与ShapeDef配置"

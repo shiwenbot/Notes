@@ -2,7 +2,7 @@
 title: "第7章：关节系统——约束刚体的相对运动"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "Joint关节约束、约束力与约束力矩、常见关节类型"

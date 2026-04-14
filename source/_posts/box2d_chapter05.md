@@ -2,7 +2,7 @@
 title: "第5章：碰撞检测——BroadPhase 与空间查询"
 date: 2026-04-14
 categories:
-  - 书籍
+  - 代码库
 tags:
   - Box2D
 description: "两阶段碰撞检测架构：BroadPhase快速筛查与精细碰撞检测"
