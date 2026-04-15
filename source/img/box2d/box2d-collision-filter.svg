@@ -1,229 +1,146 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Arrow Markers -->
-    <marker id="arrow-gray" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
-    </marker>
-    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#10b981"/>
-    </marker>
-    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#ef4444"/>
-    </marker>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+      .label { font-family: 'Inter', sans-serif; font-size: 14px; fill: #6B5D52; font-weight: 500; }
+      .title { font-family: 'Inter', sans-serif; font-size: 20px; fill: #3D3229; font-weight: 600; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; fill: #8B7D72; font-weight: 400; }
+      .code { font-family: 'SF Mono', 'Consolas', monospace; font-size: 12px; fill: #5C4E45; }
+      .bit-label { font-family: 'Inter', sans-serif; font-size: 11px; fill: #FFFFFF; font-weight: 500; }
+      .obj-label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #3D3229; font-weight: 600; }
+      .obj-desc { font-family: 'Inter', sans-serif; font-size: 11px; fill: #6B5D52; }
+    </style>
+    <linearGradient id="player" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7BA574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A9563;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="enemy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A57474;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#956363;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wall" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7492A5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#638295;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pickup" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C4956A;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#3D3229" flood-opacity="0.08"/>
+    </filter>
   </defs>
 
   <!-- Background -->
-  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect width="1200" height="700" fill="#F8F6F3"/>
+
+  <!-- Left Layer Label -->
+  <text x="40" y="350" class="label" transform="rotate(-90, 40, 350)" text-anchor="middle">COLLISION SYSTEM</text>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1f2937">
-    Box2DSharp 碰撞过滤机制
-  </text>
-  <text x="600" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6b7280">
-    CategoryBits + MaskBits + GroupIndex 三层过滤系统
-  </text>
+  <text x="120" y="60" class="title">碰撞过滤机制</text>
+  <text x="120" y="85" class="subtitle">CategoryBits + MaskBits + GroupIndex 三重控制碰撞响应</text>
 
-  <!-- Section 1: Entity Definitions (Left) -->
-  <g transform="translate(50, 120)">
-    <rect x="0" y="0" width="500" height="320" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
-    <text x="250" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#374151">
-      实体定义
-    </text>
-
-    <!-- Player -->
-    <g transform="translate(20, 50)">
-      <rect x="0" y="0" width="460" height="60" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
-      <text x="10" y="20" font-family="monospace" font-size="13" font-weight="bold" fill="#1e40af">
-        PLAYER（玩家）
-      </text>
-      <g transform="translate(10, 30)">
-        <text x="0" y="0" font-family="monospace" font-size="12" fill="#374151">CategoryBits: 0001 (0x1)</text>
-        <text x="0" y="18" font-family="monospace" font-size="12" fill="#374151">MaskBits:     0110 (0x6) → 能碰 Enemy(0010) + Terrain(0100)</text>
-      </g>
+  <!-- Three Filter Properties -->
+  <g transform="translate(120, 130)">
+    <!-- CategoryBits -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+      <text x="20" y="30" class="label" font-size="13">CategoryBits（我是谁）</text>
+      <line x1="20" y1="45" x2="300" y2="45" stroke="#E8E4E0" stroke-width="1"/>
+      <text x="20" y="70" class="obj-desc" font-size="12">定义物体属于哪些类别</text>
+      <text x="20" y="90" class="obj-desc" font-size="11" fill="#8B7D72">• 每个bit代表一个类别</text>
+      <text x="20" y="108" class="obj-desc" font-size="11" fill="#8B7D72">• 可设置多个类别（bitwise OR）</text>
+      <text x="20" y="126" class="code" font-size="11">0x0001 = Player</text>
     </g>
 
-    <!-- Enemy -->
-    <g transform="translate(20, 120)">
-      <rect x="0" y="0" width="460" height="60" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
-      <text x="10" y="20" font-family="monospace" font-size="13" font-weight="bold" fill="#991b1b">
-        ENEMY（敌人）
-      </text>
-      <g transform="translate(10, 30)">
-        <text x="0" y="0" font-family="monospace" font-size="12" fill="#374151">CategoryBits: 0010 (0x2)</text>
-        <text x="0" y="18" font-family="monospace" font-size="12" fill="#374151">MaskBits:     0001 (0x1) → 能碰 Player(0001)</text>
-      </g>
+    <!-- MaskBits -->
+    <g transform="translate(360, 0)">
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+      <text x="20" y="30" class="label" font-size="13">MaskBits（我跟谁撞）</text>
+      <line x1="20" y1="45" x2="300" y2="45" stroke="#E8E4E0" stroke-width="1"/>
+      <text x="20" y="70" class="obj-desc" font-size="12">定义物体能与哪些类别碰撞</text>
+      <text x="20" y="90" class="obj-desc" font-size="11" fill="#8B7D72">• 0表示不与任何物体碰撞</text>
+      <text x="20" y="108" class="obj-desc" font-size="11" fill="#8B7D72">• 0xFFFF表示与所有物体碰撞</text>
+      <text x="20" y="126" class="code" font-size="11">0xFFFF = All</text>
     </g>
 
-    <!-- Terrain -->
-    <g transform="translate(20, 190)">
-      <rect x="0" y="0" width="460" height="60" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="1"/>
-      <text x="10" y="20" font-family="monospace" font-size="13" font-weight="bold" fill="#065f46">
-        TERRAIN（地形）
-      </text>
-      <g transform="translate(10, 30)">
-        <text x="0" y="0" font-family="monospace" font-size="12" fill="#374151">CategoryBits: 0100 (0x4)</text>
-        <text x="0" y="18" font-family="monospace" font-size="12" fill="#374151">MaskBits:     1111 (0xF) → 能碰所有人</text>
-      </g>
-    </g>
-
-    <!-- Friendly -->
-    <g transform="translate(20, 260)">
-      <rect x="0" y="0" width="460" height="60" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
-      <text x="10" y="20" font-family="monospace" font-size="13" font-weight="bold" fill="#92400e">
-        FRIENDLY（友军）
-      </text>
-      <g transform="translate(10, 30)">
-        <text x="0" y="0" font-family="monospace" font-size="12" fill="#374151">CategoryBits: 1000 (0x8)</text>
-        <text x="0" y="18" font-family="monospace" font-size="12" fill="#374151">MaskBits:     0000 (0x0) → 不碰任何人（幽灵模式）</text>
-      </g>
+    <!-- GroupIndex -->
+    <g transform="translate(720, 0)">
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+      <text x="20" y="30" class="label" font-size="13">GroupIndex（组规则）</text>
+      <line x1="20" y1="45" x2="300" y2="45" stroke="#E8E4E0" stroke-width="1"/>
+      <text x="20" y="70" class="obj-desc" font-size="12">优先级高于 Category/Mask</text>
+      <text x="20" y="90" class="obj-desc" font-size="11" fill="#8B7D72">• 正数：同组必定碰撞</text>
+      <text x="20" y="108" class="obj-desc" font-size="11" fill="#8B7D72">• 负数：同组绝不碰撞</text>
+      <text x="20" y="126" class="code" font-size="11">-1 = Never collide</text>
     </g>
   </g>
 
-  <!-- Section 2: Collision Examples (Middle) -->
-  <g transform="translate(570, 120)">
-    <rect x="0" y="0" width="580" height="320" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
-    <text x="290" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#374151">
-      碰撞判断示例
-    </text>
+  <!-- Collision Matrix -->
+  <g transform="translate(120, 310)">
+    <text x="0" y="-15" class="label" font-size="16">碰撞检测矩阵示例</text>
 
-    <!-- Example 1: Player vs Enemy (COLLIDE) -->
-    <g transform="translate(20, 50)">
-      <rect x="0" y="0" width="540" height="100" rx="6" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+    <!-- Headers -->
+    <text x="100" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">物体</text>
+    <text x="200" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">Category</text>
+    <text x="320" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">Mask</text>
+    <text x="440" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">Group</text>
+    <text x="560" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">碰撞对象</text>
 
-      <text x="270" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#065f46">
-        ✅ Player vs Enemy → 碰撞
-      </text>
-
-      <g transform="translate(20, 40)">
-        <text x="0" y="0" font-family="monospace" font-size="11" fill="#374151">
-          Player.CategoryBits (0001) &amp; Enemy.MaskBits (0001) = 0001 ≠ 0
-        </text>
-        <text x="0" y="16" font-family="monospace" font-size="11" fill="#374151">
-          Enemy.CategoryBits (0010) &amp; Player.MaskBits (0110) = 0010 ≠ 0
-        </text>
-        <text x="0" y="36" font-family="monospace" font-size="12" font-weight="bold" fill="#10b981">
-          → 双向匹配，触发碰撞回调
-        </text>
-      </g>
+    <!-- Player Row -->
+    <g transform="translate(0, 35)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(123,165,116,0.1)"/>
+      <circle cx="80" cy="25" r="18" fill="url(#player)"/>
+      <text x="80" y="30" class="bit-label" text-anchor="middle">P</text>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0001</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0xFFFF</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">全部</text>
     </g>
 
-    <!-- Example 2: Player vs Friendly (NO COLLIDE) -->
-    <g transform="translate(20, 160)">
-      <rect x="0" y="0" width="540" height="100" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
-
-      <text x="270" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#991b1b">
-        ❌ Player vs Friendly → 不碰撞
-      </text>
-
-      <g transform="translate(20, 40)">
-        <text x="0" y="0" font-family="monospace" font-size="11" fill="#374151">
-          Player.CategoryBits (0001) &amp; Friendly.MaskBits (0000) = 0000 = 0
-        </text>
-        <text x="0" y="16" font-family="monospace" font-size="11" fill="#374151">
-          Friendly.CategoryBits (1000) &amp; Player.MaskBits (0110) = 0000 = 0
-        </text>
-        <text x="0" y="36" font-family="monospace" font-size="12" font-weight="bold" fill="#ef4444">
-          → 至少一方不匹配，不触发碰撞
-        </text>
-      </g>
+    <!-- Enemy Row -->
+    <g transform="translate(0, 95)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(165,116,116,0.1)"/>
+      <circle cx="80" cy="25" r="18" fill="url(#enemy)"/>
+      <text x="80" y="30" class="bit-label" text-anchor="middle">E</text>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0002</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0xFFFF</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">全部</text>
     </g>
-  </g>
 
-  <!-- Section 3: GroupIndex (Bottom) -->
-  <g transform="translate(50, 460)">
-    <rect x="0" y="0" width="1100" height="140" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-    <text x="550" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#92400e">
-      GroupIndex（组索引）：强制碰撞/不碰撞的快捷方式
-    </text>
+    <!-- Wall Row -->
+    <g transform="translate(0, 155)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(116,146,165,0.1)"/>
+      <rect x="62" y="7" width="36" height="36" rx="4" fill="url(#wall)"/>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0004</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0xFFFF</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">全部</text>
+    </g>
 
-    <g transform="translate(40, 50)">
-      <!-- GroupIndex > 0 -->
-      <g transform="translate(0, 0)">
-        <rect x="0" y="0" width="520" height="70" rx="6" fill="#dcfce7" stroke="#10b981" stroke-width="1"/>
-        <text x="260" y="20" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#065f46">
-          GroupIndex > 0（正数）→ 强制碰撞
-        </text>
-        <text x="260" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">
-          相同正数的实体总是碰撞，忽略 CategoryBits/MaskBits
-        </text>
-        <text x="260" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6b7280">
-          示例：队友之间可以互相穿过，但子弹必须碰撞
-        </text>
-      </g>
-
-      <!-- GroupIndex < 0 -->
-      <g transform="translate(540, 0)">
-        <rect x="0" y="0" width="520" height="70" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
-        <text x="260" y="20" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#991b1b">
-          GroupIndex &lt; 0（负数）→ 强制不碰撞
-        </text>
-        <text x="260" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">
-          相同负数的实体从不碰撞，忽略 CategoryBits/MaskBits
-        </text>
-        <text x="260" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6b7280">
-          示例：同一载具的多个部件之间不检测碰撞
-        </text>
-      </g>
+    <!-- Pickup Row -->
+    <g transform="translate(0, 215)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(212,165,116,0.1)"/>
+      <polygon points="80,10 92,35 68,35" fill="url(#pickup)"/>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0008</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0x0001</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">仅 Player</text>
     </g>
   </g>
 
-  <!-- Section 4: Decision Formula (Bottom) -->
-  <g transform="translate(50, 620)">
-    <rect x="0" y="0" width="1100" height="180" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2"/>
-    <text x="550" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#374151">
-      🎯 碰撞判断公式（完整版）
-    </text>
-
-    <!-- Formula -->
-    <g transform="translate(100, 50)">
-      <rect x="0" y="0" width="900" height="50" rx="6" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
-      <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="15" font-weight="bold" fill="#1f2937">
-        (A.CategoryBits &amp; B.MaskBits) != 0 &amp;&amp; (B.CategoryBits &amp; A.MaskBits) != 0 &amp;&amp; (A.GroupIndex &gt; 0 || B.GroupIndex &gt; 0 || A.GroupIndex != B.GroupIndex)
-      </text>
-    </g>
-
-    <!-- Explanation -->
-    <g transform="translate(50, 120)">
-      <text x="0" y="0" font-family="system-ui, sans-serif" font-size="13" fill="#374151">
-        <tspan font-weight="bold">判断逻辑：</tspan>
-        1️⃣ 双向 CategoryBits/MaskBits 匹配  AND  2️⃣ GroupIndex 不强制不碰撞
-      </text>
-      <text x="0" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#6b7280">
-        优先级：GroupIndex（最高）&gt; CategoryBits/MaskBits（中等）&gt; 物理材质（最低）
-      </text>
-      <text x="700" y="0" font-family="system-ui, sans-serif" font-size="12" fill="#10b981" font-weight="bold">
-        ✅ 三者都通过才真正触发碰撞
-      </text>
-    </g>
+  <!-- Collision Formula -->
+  <g transform="translate(120, 610)">
+    <rect x="0" y="0" width="860" height="60" rx="12" fill="#FFFFFF" stroke="#D4A574" stroke-width="2"/>
+    <text x="20" y="25" class="label" font-size="13" fill="#D4A574">📐 碰撞判定公式</text>
+    <text x="20" y="48" class="code" font-size="13">(A.CategoryBits &amp; B.MaskBits) &amp;&amp; (B.CategoryBits &amp; A.MaskBits) &amp;&amp; (A.GroupIndex ≠ 0 || A.GroupIndex == B.GroupIndex)</text>
   </g>
 
-  <!-- Footer Note -->
-  <g transform="translate(50, 820)">
-    <text x="550" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6b7280">
-      💡 <tspan font-weight="bold">最佳实践：</tspan>CategoryBits 用 2^n 幂次（1,2,4,8...），MaskBits 用 OR 组合。例如：玩家 Category=1，敌人 Category=2，地形 Category=4
-    </text>
-    <text x="550" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#9ca3af">
-      常见错误：忘记双向检查（只检查 A&amp;B，不检查 B&amp;A），导致单向碰撞失效
-    </text>
+  <!-- Right Legend -->
+  <g transform="translate(1050, 650)">
+    <text x="0" y="0" class="label" font-size="10" text-anchor="end">COLLISION SYSTEM</text>
+    <text x="0" y="15" class="subtitle" font-size="9" text-anchor="end">Filtering Rules</text>
   </g>
-
-  <!-- Legend -->
-  <g transform="translate(50, 860)">
-    <rect x="0" y="0" width="15" height="15" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
-    <text x="25" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#374151">玩家</text>
-
-    <rect x="80" y="0" width="15" height="15" rx="3" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
-    <text x="105" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#374151">敌人</text>
-
-    <rect x="160" y="0" width="15" height="15" rx="3" fill="#d1fae5" stroke="#10b981" stroke-width="1"/>
-    <text x="185" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#374151">地形</text>
-
-    <rect x="240" y="0" width="15" height="15" rx="3" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
-    <text x="265" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#374151">友军</text>
-
-    <text x="400" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#6b7280">
-      位运算示例：0001 &amp; 0110 = 0000（不匹配）| 0010 &amp; 0110 = 0010（匹配）
-    </text>
-  </g>
-
 </svg>

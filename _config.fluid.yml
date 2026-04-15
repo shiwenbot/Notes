@@ -70,6 +70,10 @@ sidebar:
 comments:
   enable: false
 
+# 图片放大
+image_zoom:
+  enable: true
+
 # 统计（暂时关闭）
 statistics:
   enable: false
