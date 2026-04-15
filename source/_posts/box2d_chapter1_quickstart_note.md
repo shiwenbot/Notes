@@ -1,5 +1,5 @@
 ---
-title: "Box2DSharp Chapter 1 - 快速入门 课堂笔记"
+title: "【课堂笔记】Box2DSharp Chapter 1 - 快速入门"
 date: 2026-04-15
 categories:
   - 代码库

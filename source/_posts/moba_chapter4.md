@@ -1,5 +1,5 @@
 ---
-title: "MOBA Chapter 4 - 锁步帧同步（LSF）"
+title: "【教材】MOBA Chapter 4 - 锁步帧同步（LSF）"
 date: 2026-04-12
 categories:
   - 代码库

@@ -1,5 +1,5 @@
 ---
-title: "Chapter 3-1 - Skinned Meshes"
+title: "【课堂笔记】Chapter 3-1 - Skinned Meshes"
 date: 2026-03-30
 categories:
   - 书籍

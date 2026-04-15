@@ -1,5 +1,5 @@
 ---
-title: "第5章：碰撞检测——BroadPhase 与空间查询"
+title: "【教材】第5章：碰撞检测——BroadPhase 与空间查询"
 date: 2026-04-14
 categories:
   - 代码库

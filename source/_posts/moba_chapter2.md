@@ -1,5 +1,5 @@
 ---
-title: "MOBA Chapter 2 - ET框架核心机制"
+title: "【教材】MOBA Chapter 2 - ET框架核心机制"
 date: 2026-04-11
 categories:
   - 代码库

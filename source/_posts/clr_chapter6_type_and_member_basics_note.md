@@ -1,5 +1,5 @@
 ---
-title: "CLR Chapter 6 - Type and Member Basics"
+title: "【课堂笔记】CLR Chapter 6 - Type and Member Basics"
 date: 2026-03-31
 categories:
   - 书籍

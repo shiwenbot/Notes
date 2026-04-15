@@ -1,5 +1,5 @@
 ---
-title: "第2章：物理世界详解——World 与 WorldDef"
+title: "【教材】第2章：物理世界详解——World 与 WorldDef"
 date: 2026-04-14
 categories:
   - 代码库

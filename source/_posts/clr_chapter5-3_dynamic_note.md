@@ -1,5 +1,5 @@
 ---
-title: "CLR Chapter 5-3 - Dynamic"
+title: "【课堂笔记】CLR Chapter 5-3 - Dynamic"
 date: 2026-03-31
 categories:
   - 书籍

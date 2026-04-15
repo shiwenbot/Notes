@@ -1,5 +1,5 @@
 ---
-title: "MOBA Chapter 1 - 项目概述与三层架构"
+title: "【教材】MOBA Chapter 1 - 项目概述与三层架构"
 date: 2026-04-07
 categories:
   - 代码库

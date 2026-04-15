@@ -1,5 +1,5 @@
 ---
-title: "第3章：刚体系统——Body 的三种类型"
+title: "【教材】第3章：刚体系统——Body 的三种类型"
 date: 2026-04-14
 categories:
   - 代码库
