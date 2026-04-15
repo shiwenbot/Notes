@@ -130,6 +130,8 @@ namespace Box2DSharp
 
 `InternalValue` 是由 `DefaultWorldDef()` 自动填充的"魔法校验码"，用于在 `CreateWorld` 时检测你是否真的初始化了定义。不要手动修改它。
 
+![WorldDef 核心参数分类](/img/box2d-worlddef-params.svg)
+
 ### Step 机制：物理模拟的心跳
 
 物理引擎不是连续运行的，而是被离散的时间步"推着走"。在 Box2DSharp 中，这个入口就是 `Step` 方法。你通常会在游戏的每一帧调用它，比如：
@@ -241,6 +243,8 @@ namespace Box2DSharp
 3. **Collide 阶段**：对 BroadPhase 筛选出的候选对进行精细碰撞检测，更新接触状态，触发传感器和接触事件。
 4. **Solve 阶段**：由求解器进行速度积分、约束求解、位置积分，这是真正的物理运算核心。
 
+![Step 执行流程](/img/box2d-step-four-phases.svg)
+
 `Step` 执行期间会把 `world.Locked` 设为 `true`，这意味着你在 Step 过程中不能从外部增删刚体或形状。如果你尝试这么做，Box2DSharp 会直接忽略或抛出断言错误。
 
 #### 时间步与子步：精度的秘密
@@ -249,7 +253,11 @@ namespace Box2DSharp
 
 `timeStep` 是你告诉引擎"这一帧物理世界应该前进多久"，比如 `1/60f` 秒。`subStepCount` 则是把这段总时间切成多少个小片。引擎实际进行约束求解时，每次只走 `h = timeStep / subStepCount` 这么长的时间。
 
-子步越多，模拟精度越高，但 CPU 消耗也越大。Box2DSharp 根据 `h` 自动调整 `Hertz`（频率），确保在大时间步下依然稳定。如果你设置 `timeStep = 1/30f` 且 `subStepCount = 4`，那么内部实际以 `1/120f` 为粒度迭代了 4 次约束求解。
+子步越多，模拟精度越高，但 CPU 消耗也越大。
+
+![时间步与子步关系](/img/box2d-timestep-substep.svg)
+
+Box2DSharp 根据 `h` 自动调整 `Hertz`（频率），确保在大时间步下依然稳定。如果你设置 `timeStep = 1/30f` 且 `subStepCount = 4`，那么内部实际以 `1/120f` 为粒度迭代了 4 次约束求解。
 
 `StepContext` 就是承载这些运行时计算参数的上下文对象：
 
