@@ -24,6 +24,8 @@ description: "Box2DSharp物理引擎第一章学习笔记：四步工作流、ID
 
 为什么分三层？组合自由度——一个Body可以挂多个Shape（不同密度、摩擦力），职责分离（World管规则，Body管运动，Shape管碰撞）。
 
+![Box2DSharp 四步工作流](/img/box2d/box2d-four-step-workflow.svg)
+
 ## ID系统 vs 对象引用
 
 Box2DSharp不返回Body对象引用，而是返回BodyId：
@@ -42,6 +44,8 @@ public struct BodyId {
 | ID系统 | 安全（Revision检测）、允许内部优化、API稳定 | 需间接访问 |
 
 Revision机制就像Git的commit hash——索引相同但版本号不同，就是不同的对象。销毁后索引复用但Revision递增，旧ID因版本号不匹配被拒绝。
+
+![BodyId Revision 版本号防野指针机制](/img/box2d/box2d-revision-mechanism.svg)
 
 ## Def模式 vs C#默认参数
 
@@ -79,6 +83,8 @@ public struct Filter {
 ```
 
 CategoryBits+MaskBits是位掩码机制（Unity类比：Layer Collision Matrix），16位可表达65536种组合。GroupIndex覆盖前两者，解决布娃娃关节互碰等特殊场景。
+
+![碰撞过滤机制](/img/box2d/box2d-collision-filter.svg)
 
 ## 几何体类型
 
