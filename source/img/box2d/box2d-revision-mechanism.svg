@@ -125,9 +125,4 @@
     </marker>
   </defs>
 
-  <!-- Right Legend -->
-  <g transform="translate(1050, 550)">
-    <text x="0" y="0" class="label" font-size="10" text-anchor="end">MEMORY SAFETY</text>
-    <text x="0" y="15" class="subtitle" font-size="9" text-anchor="end">Revision Mechanism</text>
-  </g>
 </svg>

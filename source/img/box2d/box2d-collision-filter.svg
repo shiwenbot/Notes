@@ -138,9 +138,4 @@
     <text x="20" y="48" class="code" font-size="13">(A.CategoryBits &amp; B.MaskBits) &amp;&amp; (B.CategoryBits &amp; A.MaskBits) &amp;&amp; (A.GroupIndex ≠ 0 || A.GroupIndex == B.GroupIndex)</text>
   </g>
 
-  <!-- Right Legend -->
-  <g transform="translate(1050, 650)">
-    <text x="0" y="0" class="label" font-size="10" text-anchor="end">COLLISION SYSTEM</text>
-    <text x="0" y="15" class="subtitle" font-size="9" text-anchor="end">Filtering Rules</text>
-  </g>
 </svg>
