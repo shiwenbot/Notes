@@ -1,0 +1,118 @@
+<svg width="1200" height="650" viewBox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap");
+      .label { font-family: "Inter", sans-serif; font-size: 14px; fill: #6B5D52; font-weight: 500; }
+      .title { font-family: "Inter", sans-serif; font-size: 20px; fill: #3D3229; font-weight: 600; }
+      .subtitle { font-family: "Inter", sans-serif; font-size: 14px; fill: #8B7D72; font-weight: 400; }
+      .code { font-family: "SF Mono", "Consolas", monospace; font-size: 13px; fill: #5C4E45; }
+      .formula { font-family: "SF Mono", "Consolas", monospace; font-size: 15px; fill: #3D3229; font-weight: 600; }
+    </style>
+
+    <linearGradient id="step-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C4956A;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="substep-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7BA574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A9563;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="result-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7492A5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#638295;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#3D3229" flood-opacity="0.08"/>
+    </filter>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#A89A8F"/>
+    </marker>
+
+  </defs>
+
+  <rect width="1200" height="650" fill="#F8F6F3"/>
+
+  <text x="40" y="325" class="label" transform="rotate(-90, 40, 325)" text-anchor="middle">TIME STEP</text>
+
+  <text x="120" y="60" class="title">时间步与子步关系</text>
+  <text x="120" y="85" class="subtitle">精度与性能的平衡——子步数越多越精确，但CPU消耗越大</text>
+
+  <g transform="translate(120, 130)">
+    <rect x="0" y="0" width="280" height="160" rx="12" fill="url(#step-grad)" filter="url(#shadow)"/>
+    <text x="20" y="30" class="label" font-size="15" fill="white">输入参数</text>
+    <line x1="20" y1="45" x2="260" y2="45" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="20" y="75" class="code" font-size="14" fill="white">timeStep = 1/60f</text>
+    <text x="20" y="100" class="label" font-size="11" fill="rgba(255,255,255,0.9)">总时间步长 (秒)</text>
+    <text x="20" y="130" class="code" font-size="14" fill="white">subStepCount = 4</text>
+    <text x="20" y="155" class="label" font-size="11" fill="rgba(255,255,255,0.9)">子步数量</text>
+  </g>
+
+  <path d="M 410 210 L 450 210" stroke="#A89A8F" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="430" y="195" class="subtitle" font-size="11" text-anchor="middle">计算</text>
+
+  <g transform="translate(460, 130)">
+    <rect x="0" y="0" width="280" height="160" rx="12" fill="url(#substep-grad)" filter="url(#shadow)"/>
+    <text x="20" y="30" class="label" font-size="15" fill="white">内部计算</text>
+    <line x1="20" y1="45" x2="260" y2="45" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="140" y="85" class="formula" font-size="18" fill="white" text-anchor="middle">h = Dt / N</text>
+    <text x="140" y="120" class="code" font-size="13" fill="white" text-anchor="middle">h = (1/60) / 4</text>
+    <text x="140" y="145" class="code" font-size="13" fill="white" text-anchor="middle">h = 1/240 秒</text>
+  </g>
+
+  <path d="M 750 210 L 790 210" stroke="#A89A8F" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="770" y="195" class="subtitle" font-size="11" text-anchor="middle">迭代</text>
+
+  <g transform="translate(800, 130)">
+    <rect x="0" y="0" width="280" height="160" rx="12" fill="url(#result-grad)" filter="url(#shadow)"/>
+    <text x="20" y="30" class="label" font-size="15" fill="white">执行结果</text>
+    <line x1="20" y1="45" x2="260" y2="45" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="140" y="75" class="code" font-size="14" fill="white" text-anchor="middle">迭代 4 次</text>
+    <text x="140" y="100" class="label" font-size="11" fill="rgba(255,255,255,0.9)" text-anchor="middle">约束求解</text>
+    <text x="140" y="130" class="code" font-size="13" fill="white" text-anchor="middle">每次 h = 1/240s</text>
+    <text x="140" y="155" class="label" font-size="11" fill="rgba(255,255,255,0.9)" text-anchor="middle">精度 = 4倍</text>
+  </g>
+
+  <g transform="translate(120, 330)">
+    <text x="0" y="-15" class="label" font-size="16">子步可视化</text>
+    <text x="0" y="10" class="subtitle" font-size="12">timeStep = 1/60秒，切分为 4 个子步</text>
+
+    <rect x="0" y="30" width="960" height="60" rx="8" fill="#E8E4E0" stroke="#D4D0CC" stroke-width="2"/>
+
+    <rect x="20" y="40" width="215" height="40" rx="6" fill="#D4A574" stroke="white" stroke-width="2"/>
+    <text x="127" y="65" class="code" font-size="14" fill="white" text-anchor="middle">h = 1/240s</text>
+    <text x="127" y="82" class="label" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle">子步 1</text>
+
+    <rect x="255" y="40" width="215" height="40" rx="6" fill="#C4956A" stroke="white" stroke-width="2"/>
+    <text x="362" y="65" class="code" font-size="14" fill="white" text-anchor="middle">h = 1/240s</text>
+    <text x="362" y="82" class="label" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle">子步 2</text>
+
+    <rect x="490" y="40" width="215" height="40" rx="6" fill="#B8956E" stroke="white" stroke-width="2"/>
+    <text x="597" y="65" class="code" font-size="14" fill="white" text-anchor="middle">h = 1/240s</text>
+    <text x="597" y="82" class="label" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle">子步 3</text>
+
+    <rect x="725" y="40" width="215" height="40" rx="6" fill="#A8855E" stroke="white" stroke-width="2"/>
+    <text x="832" y="65" class="code" font-size="14" fill="white" text-anchor="middle">h = 1/240s</text>
+    <text x="832" y="82" class="label" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle">子步 4</text>
+  </g>
+
+  <g transform="translate(120, 460)">
+    <rect x="0" y="0" width="400" height="120" rx="12" fill="rgba(123,165,116,0.1)" stroke="#7BA574" stroke-width="2"/>
+    <text x="20" y="25" class="label" font-size="13" fill="#7BA574">✓ 高精度 (subStepCount = 8)</text>
+    <text x="20" y="50" class="subtitle" font-size="11">• 约束求解更精确，物理模拟更稳定</text>
+    <text x="20" y="70" class="subtitle" font-size="11">• 适合精密物理、高速碰撞场景</text>
+    <text x="20" y="90" class="subtitle" font-size="11">• CPU 消耗高，帧率可能下降</text>
+  </g>
+
+  <g transform="translate(560, 460)">
+    <rect x="0" y="0" width="400" height="120" rx="12" fill="rgba(165,116,116,0.1)" stroke="#A57474" stroke-width="2"/>
+    <text x="20" y="25" class="label" font-size="13" fill="#A57474">⚡ 高性能 (subStepCount = 1)</text>
+    <text x="20" y="50" class="subtitle" font-size="11">• CPU 消耗低，帧率稳定</text>
+    <text x="20" y="70" class="subtitle" font-size="11">• 适合简单物理、低速场景</text>
+    <text x="20" y="90" class="subtitle" font-size="11">• 精度较低，可能出现穿模</text>
+  </g>
+
+</svg>
