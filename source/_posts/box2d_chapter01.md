@@ -1,6 +1,7 @@
 ---
 title: "【教材】第1章：快速入门——从零开始的物理世界"
 date: 2026-04-14
+order: 001
 categories:
   - 代码库
 tags:

@@ -1,6 +1,7 @@
 ---
 title: "【教材】第8章：传感器——无形之眼"
-date: 2026-04-14
+date: 2026-04-21
+order: 008
 categories:
   - 代码库
 tags:

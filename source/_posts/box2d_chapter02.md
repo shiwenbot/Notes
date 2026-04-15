@@ -1,6 +1,7 @@
 ---
 title: "【教材】第2章：物理世界详解——World 与 WorldDef"
-date: 2026-04-14
+date: 2026-04-15
+order: 002
 categories:
   - 代码库
 tags:

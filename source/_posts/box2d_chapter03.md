@@ -1,6 +1,7 @@
 ---
 title: "【教材】第3章：刚体系统——Body 的三种类型"
-date: 2026-04-14
+date: 2026-04-16
+order: 003
 categories:
   - 代码库
 tags:

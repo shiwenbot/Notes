@@ -1,6 +1,7 @@
 ---
 title: "【教材】第9章：调试与可视化"
-date: 2026-04-14
+date: 2026-04-22
+order: 009
 categories:
   - 代码库
 tags:
