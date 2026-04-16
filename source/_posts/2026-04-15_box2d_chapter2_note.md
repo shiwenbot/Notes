@@ -1,5 +1,5 @@
 ---
-title: "Box2DSharp Chapter 2 课堂笔记 - 物理世界详解：World 与 WorldDef"
+title: "【课堂笔记】Box2DSharp Chapter 2 - 物理世界详解"
 date: 2026-04-15
 categories:
   - 代码库
@@ -8,7 +8,7 @@ tags:
 description: "WorldId 句柄设计、WorldDef 参数调优、Step 四阶段流程、Island 机制、世界查询 API"
 ---
 
-# 2026-04-15 Box2D Chapter 2 课堂笔记
+# 【课堂笔记】Box2DSharp Chapter 2 - 物理世界详解
 
 ## 课程信息
 
