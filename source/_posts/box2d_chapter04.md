@@ -17,6 +17,8 @@ description: "Shape碰撞边界、质量分布、表面属性与ShapeDef配置"
 
 ## 五种形状详解
 
+![五种形状对比](/img/box2d/box2d-shape-types.svg)
+
 Box2DSharp 提供了五种基础形状类型，通过 `ShapeType` 枚举来区分：
 
 ```csharp:src/Collision/Geometry/ShapeType.cs [6:25]
@@ -373,6 +375,8 @@ body.ShapeCount += 1;
 
 ## 运行时修改形状
 
+![SetDensity 陷阱](/img/box2d/box2d-setdensity-pitfall.svg)
+
 游戏玩得多了你就知道，角色的体型会变大变小，地面的材质会从冰变成沙子。Box2DSharp 允许你在运行时修改形状属性甚至直接替换几何体。
 
 密度、摩擦和弹性的修改最简单：
@@ -561,6 +565,10 @@ public static void ApplyMassFromShapes(BodyId bodyId)
 Box2DSharp 的 Polygon 结构体上有一行注释写得很直接："DO NOT fill this out manually"——别手动填。这其实透露了一个重要的设计前提：引擎内部对凸多边形有严格的假设，用户必须通过 `b2MakePolygon` 或 `b2MakeBox` 这类工厂函数来创建。为什么做这么强的限制？答案藏在碰撞检测的效率和稳定性里。
 
 凸多边形有一个特别好的性质：任意两点连线都在形状内部。这意味着 Separating Axis Theorem（SAT）可以毫无例外地适用——你只需要测试所有 edge normal 方向上的投影，如果存在任何一个方向上的间隙，两个形状就不碰撞。这个算法的复杂度是 O(m+n)，而且实现非常规整，没有凹多边形那种"内部空洞导致投影重叠但仍不碰撞"的 corner case。Box2DSharp 把时间步预算看得很紧，它不愿意在碰撞检测里处理分支复杂、数据不规整的通用多边形。所以不是不能做凹多边形，而是做了之后，性能的确定性和代码的可维护性都会大打折扣。如果你确实需要凹的外形，复合形状（一个 Body 挂多个 Polygon/Circle）就是官方推荐的替代方案。
+
+![幽灵碰撞](/img/box2d/box2d-ghost-collision.svg)
+
+![ChainShape 幽灵顶点](/img/box2d/box2d-chain-ghost-vertices.svg)
 
 接下来说说 ChainShape。它的存在感比 Circle、Polygon 低很多，但却是地形系统的"秘密武器"。`ChainDef` 的注释开门见山："designed to eliminate ghost collisions with some limitations"——专门用来消除幽灵碰撞，但有很多限制。什么是幽灵碰撞？想象一个由很多小线段拼成的地面，一个圆形角色沿着它滚动。滚到两个线段的连接处时，圆的重心可能刚好跨过相邻线段的边界，导致引擎错误地认为圆"撞"到了内侧的角，产生一个向上的跳动感。ChainShape 的解法很聪明：每个内部线段不是孤立存在的，它被包装成一个 `ChainSegment`，带有 `Ghost1` 和 `Ghost2` 两个"幽灵顶点"。这两个幽灵顶点不直接参与碰撞，但会为相邻线段提供平滑的过渡参考，让碰撞法线在连续线段之间自然插值，从而避免角色被接缝处的尖角弹飞。
 
