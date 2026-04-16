@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500">
+  <!-- 背景 -->
+  <rect width="600" height="500" fill="#1a1b2e"/>
+
+  <!-- 标题 -->
+  <text x="300" y="40" text-anchor="middle" fill="#e0e6ed" font-size="24" font-weight="bold" font-family="Arial, sans-serif">
+    SetDensity 陷阱
+  </text>
+
+  <!-- 左边：错误做法 -->
+  <g transform="translate(150, 150)">
+    <rect x="-120" y="-80" width="240" height="280" rx="10" fill="#2c313c" stroke="#e06c75" stroke-width="2"/>
+    <text x="0" y="-50" text-anchor="middle" fill="#e06c75" font-size="20" font-weight="bold" font-family="Arial, sans-serif">❌ 错误做法</text>
+
+    <!-- 流程 -->
+    <g transform="translate(-80, 0)">
+      <rect x="0" y="0" width="160" height="40" rx="5" fill="#3b4048" stroke="#61afef" stroke-width="2"/>
+      <text x="80" y="25" text-anchor="middle" fill="#61afef" font-size="13" font-family="Arial, sans-serif">SetDensity(10.0)</text>
+    </g>
+
+    <path d="M0 40 L0 60" stroke="#abb2bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(-80, 60)">
+      <rect x="0" y="0" width="160" height="40" rx="5" fill="#3b4048" stroke="#98c379" stroke-width="2"/>
+      <text x="80" y="25" text-anchor="middle" fill="#98c379" font-size="13" font-family="Arial, sans-serif">Density = 10.0 ✓</text>
+    </g>
+
+    <path d="M0 100 L0 120" stroke="#abb2bf" stroke-width="2"/>
+
+    <g transform="translate(-80, 120)">
+      <rect x="0" y="0" width="160" height="40" rx="5" fill="#3b4048" stroke="#e06c75" stroke-width="2"/>
+      <text x="80" y="25" text-anchor="middle" fill="#e06c75" font-size="13" font-family="Arial, sans-serif">Mass = 1.0 ✗</text>
+    </g>
+
+    <text x="0" y="185" text-anchor="middle" fill="#e06c75" font-size="14" font-weight="bold" font-family="Arial, sans-serif">密度变了，质量没变！</text>
+  </g>
+
+  <!-- 右边：正确做法 -->
+  <g transform="translate(450, 150)">
+    <rect x="-120" y="-80" width="240" height="280" rx="10" fill="#2c313c" stroke="#98c379" stroke-width="2"/>
+    <text x="0" y="-50" text-anchor="middle" fill="#98c379" font-size="20" font-weight="bold" font-family="Arial, sans-serif">✓ 正确做法</text>
+
+    <!-- 流程 -->
+    <g transform="translate(-80, 0)">
+      <rect x="0" y="0" width="160" height="35" rx="5" fill="#3b4048" stroke="#61afef" stroke-width="2"/>
+      <text x="80" y="22" text-anchor="middle" fill="#61afef" font-size="13" font-family="Arial, sans-serif">SetDensity(10.0)</text>
+    </g>
+
+    <path d="M0 35 L0 55" stroke="#abb2bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(-80, 55)">
+      <rect x="0" y="0" width="160" height="35" rx="5" fill="#3b4048" stroke="#61afef" stroke-width="2"/>
+      <text x="80" y="22" text-anchor="middle" fill="#61afef" font-size="13" font-family="Arial, sans-serif">SetDensity(5.0)</text>
+    </g>
+
+    <path d="M0 90 L0 110" stroke="#abb2bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(-80, 110)">
+      <rect x="0" y="0" width="160" height="40" rx="5" fill="#3b4048" stroke="#e5c07b" stroke-width="2"/>
+      <text x="80" y="25" text-anchor="middle" fill="#e5c07b" font-size="13" font-family="Arial, sans-serif">ApplyMassFromShapes()</text>
+    </g>
+
+    <path d="M0 150 L0 170" stroke="#abb2bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(-80, 170)">
+      <rect x="0" y="0" width="160" height="40" rx="5" fill="#3b4048" stroke="#98c379" stroke-width="2"/>
+      <text x="80" y="25" text-anchor="middle" fill="#98c379" font-size="13" font-family="Arial, sans-serif">Mass = 15.0 ✓</text>
+    </g>
+
+    <text x="0" y="235" text-anchor="middle" fill="#98c379" font-size="14" font-weight="bold" font-family="Arial, sans-serif">改完后统一更新</text>
+  </g>
+
+  <!-- 箭头定义 -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#abb2bf"/>
+    </marker>
+  </defs>
+
+  <!-- 底部提示 -->
+  <text x="300" y="460" text-anchor="middle" fill="#e5c07b" font-size="16" font-family="Arial, sans-serif">
+    💡 SetDensity 只改数值，必须手动调用 ApplyMassFromShapes
+  </text>
+</svg>

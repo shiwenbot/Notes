@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- 背景 -->
+  <rect width="600" height="600" fill="#1a1b2e"/>
+
+  <!-- 标题 -->
+  <text x="300" y="40" text-anchor="middle" fill="#e0e6ed" font-size="24" font-weight="bold" font-family="Arial, sans-serif">
+    幽灵碰撞（Ghost Collision）
+  </text>
+
+  <!-- 正常滚动 -->
+  <g transform="translate(300, 120)">
+    <text x="0" y="-50" text-anchor="middle" fill="#98c379" font-size="18" font-weight="bold" font-family="Arial, sans-serif">✓ 正常滚动</text>
+
+    <!-- 地面线段1 -->
+    <line x1="-150" y1="50" x2="0" y2="50" stroke="#abb2bf" stroke-width="3"/>
+    <!-- 地面线段2 -->
+    <line x1="0" y1="50" x2="150" y2="50" stroke="#abb2bf" stroke-width="3"/>
+
+    <!-- 接缝标注 -->
+    <circle cx="0" cy="50" r="3" fill="#e5c07b"/>
+    <text x="0" y="75" text-anchor="middle" fill="#e5c07b" font-size="12" font-family="Arial, sans-serif">接缝</text>
+
+    <!-- 球（在线段1上） -->
+    <circle cx="-60" cy="10" r="35" fill="none" stroke="#61afef" stroke-width="3"/>
+
+    <!-- 法线 -->
+    <line x1="-60" y1="10" x2="-60" y2="-30" stroke="#c678dd" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="-60" y="-40" text-anchor="middle" fill="#c678dd" font-size="12" font-family="Arial, sans-serif">法线↑</text>
+
+    <!-- 重力箭头 -->
+    <line x1="-60" y1="-50" x2="-60" y2="-20" stroke="#e06c75" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <text x="-45" y="-40" fill="#e06c75" font-size="11" font-family="Arial, sans-serif">重力</text>
+  </g>
+
+  <!-- 分隔线 -->
+  <line x1="50" y1="220" x2="550" y2="220" stroke="#3b4048" stroke-width="2" stroke-dasharray="10,5"/>
+
+  <!-- 幽灵碰撞 -->
+  <g transform="translate(300, 380)">
+    <text x="0" y="-50" text-anchor="middle" fill="#e06c75" font-size="18" font-weight="bold" font-family="Arial, sans-serif">✗ 幽灵碰撞</text>
+
+    <!-- 地面线段1 -->
+    <line x1="-150" y1="50" x2="0" y2="50" stroke="#abb2bf" stroke-width="3"/>
+    <!-- 地面线段2 -->
+    <line x1="0" y1="50" x2="150" y2="50" stroke="#abb2bf" stroke-width="3"/>
+
+    <!-- 接缝端点（内侧尖角） -->
+    <circle cx="0" cy="50" r="5" fill="#e06c75"/>
+    <text x="0" y="80" text-anchor="middle" fill="#e06c75" font-size="12" font-weight="bold" font-family="Arial, sans-serif">端点（内侧尖角）</text>
+
+    <!-- 球（刚好跨过边界） -->
+    <circle cx="10" cy="15" r="35" fill="none" stroke="#e06c75" stroke-width="3"/>
+
+    <!-- 问题解释 -->
+    <g transform="translate(0, -80)">
+      <text x="0" y="0" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">球心跨过边界，线段1认为球离开</text>
+      <text x="0" y="20" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">线段2认为球还没接触，但端点很近</text>
+      <text x="0" y="40" text-anchor="middle" fill="#e06c75" font-size="13" font-weight="bold" font-family="Arial, sans-serif">→ 引擎误判：撞到端点！</text>
+    </g>
+
+    <!-- 错误的碰撞法线 -->
+    <line x1="10" y1="15" x2="25" y2="-20" stroke="#e06c75" stroke-width="3"/>
+    <polygon points="25,-20 20,-10 30,-12" fill="#e06c75"/>
+    <text x="40" y="-15" fill="#e06c75" font-size="12" font-weight="bold" font-family="Arial, sans-serif">斜向法线</text>
+
+    <!-- 距离标注 -->
+    <line x1="10" y1="15" x2="0" y2="50" stroke="#e5c07b" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="-35" y="35" fill="#e5c07b" font-size="11" font-family="Arial, sans-serif">距离 &lt; 半径</text>
+  </g>
+
+  <!-- 底部说明 -->
+  <g transform="translate(300, 540)">
+    <text x="0" y="0" text-anchor="middle" fill="#e5c07b" font-size="15" font-family="Arial, sans-serif">
+      💡 结果：球被接缝处的端点弹飞
+    </text>
+    <text x="0" y="25" text-anchor="middle" fill="#98c379" font-size="14" font-family="Arial, sans-serif">
+      解决方案：ChainShape 用幽灵顶点平滑过渡碰撞法线
+    </text>
+  </g>
+
+  <!-- 箭头定义 -->
+  <defs>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e06c75"/>
+    </marker>
+  </defs>
+</svg>

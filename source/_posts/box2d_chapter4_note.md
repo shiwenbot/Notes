@@ -14,11 +14,15 @@ description: "Box2DSharp Chapter 4 形状系统学习笔记：运行时修改形
 **章节**: Chapter 4 - 形状系统
 **课时**: 第4课（续上节课，从知识点5开始）
 
+![](../img/box2d/box2d-shape-types.svg)
+
 ---
 
 ## 本次学习内容
 
 ### 知识点5：运行时修改形状的 API 和注意事项
+
+![](../img/box2d/box2d-setdensity-pitfall.svg)
 
 **核心API**：
 - `SetDensity(shapeId, density)` - 修改密度
@@ -79,6 +83,8 @@ Body.ApplyMassFromShapes(bodyId);  // 只计算1次
 
 ### 知识点7：ChainShape 的设计与限制
 
+![](../img/box2d/box2d-ghost-collision.svg)
+
 **解决幽灵碰撞（Ghost Collision）**：
 - 多个独立线段拼成地面时，球滚到接缝处会被内侧尖角弹飞
 - 原因：每个线段独立检测碰撞，接缝处的端点离球很近，引擎误判为碰撞
@@ -89,6 +95,8 @@ Body.ApplyMassFromShapes(bodyId);  // 只计算1次
 2. 无质量（线段没有体积）
 3. 单向碰撞（默认逆时针环绕，内部在左侧）
 4. 开放链首尾边无碰撞（IsLoop=false 时第一条和最后一条边不参与碰撞）
+
+![](../img/box2d/box2d-chain-ghost-vertices.svg)
 
 **ChainDef 参数**：
 ```csharp

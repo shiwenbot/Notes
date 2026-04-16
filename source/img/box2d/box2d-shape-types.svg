@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+  <!-- 背景 -->
+  <rect width="600" height="700" fill="#1a1b2e"/>
+
+  <!-- 标题 -->
+  <text x="300" y="40" text-anchor="middle" fill="#e0e6ed" font-size="24" font-weight="bold" font-family="Arial, sans-serif">
+    Box2DSharp 五种形状对比
+  </text>
+
+  <!-- Circle 圆形 -->
+  <g transform="translate(300, 100)">
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#61afef" stroke-width="3"/>
+    <text x="0" y="-55" text-anchor="middle" fill="#61afef" font-size="18" font-weight="bold" font-family="Arial, sans-serif">Circle</text>
+    <text x="0" y="60" text-anchor="middle" fill="#98c379" font-size="14" font-family="Arial, sans-serif">12 字节 | O(1) 距离计算</text>
+    <text x="0" y="80" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">球、轮子、炮弹</text>
+  </g>
+
+  <!-- Capsule 胶囊体 -->
+  <g transform="translate(300, 220)">
+    <ellipse cx="0" cy="0" rx="25" ry="50" fill="none" stroke="#e5c07b" stroke-width="3"/>
+    <text x="0" y="-70" text-anchor="middle" fill="#e5c07b" font-size="18" font-weight="bold" font-family="Arial, sans-serif">Capsule</text>
+    <text x="0" y="70" text-anchor="middle" fill="#98c379" font-size="14" font-family="Arial, sans-serif">20 字节 | 不卡墙角</text>
+    <text x="0" y="90" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">角色碰撞体（黄金形状）</text>
+  </g>
+
+  <!-- Segment 线段 -->
+  <g transform="translate(300, 340)">
+    <line x1="-60" y1="0" x2="60" y2="0" stroke="#c678dd" stroke-width="3"/>
+    <circle cx="-60" cy="0" r="4" fill="#c678dd"/>
+    <circle cx="60" cy="0" r="4" fill="#c678dd"/>
+    <text x="0" y="-30" text-anchor="middle" fill="#c678dd" font-size="18" font-weight="bold" font-family="Arial, sans-serif">Segment</text>
+    <text x="0" y="40" text-anchor="middle" fill="#98c379" font-size="14" font-family="Arial, sans-serif">16 字节 | 无质量</text>
+    <text x="0" y="60" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">简化地面、墙壁、平台</text>
+  </g>
+
+  <!-- Polygon 多边形 -->
+  <g transform="translate(300, 460)">
+    <polygon points="-50,-30 50,-30 60,30 -60,30" fill="none" stroke="#56b6c2" stroke-width="3"/>
+    <text x="0" y="-50" text-anchor="middle" fill="#56b6c2" font-size="18" font-weight="bold" font-family="Arial, sans-serif">Polygon</text>
+    <text x="0" y="60" text-anchor="middle" fill="#98c379" font-size="14" font-family="Arial, sans-serif">144 字节 | 凸多边形</text>
+    <text x="0" y="80" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">箱子、平台、角色躯干</text>
+  </g>
+
+  <!-- ChainShape 链条形状 -->
+  <g transform="translate(300, 580)">
+    <polyline points="-100,0 -50,10 0,-5 50,8 100,0" fill="none" stroke="#d19a66" stroke-width="3"/>
+    <circle cx="-100" cy="0" r="4" fill="#d19a66"/>
+    <circle cx="-50" cy="10" r="4" fill="#d19a66"/>
+    <circle cx="0" cy="-5" r="4" fill="#d19a66"/>
+    <circle cx="50" cy="8" r="4" fill="#d19a66"/>
+    <circle cx="100" cy="0" r="4" fill="#d19a66"/>
+    <text x="0" y="-35" text-anchor="middle" fill="#d19a66" font-size="18" font-weight="bold" font-family="Arial, sans-serif">ChainShape</text>
+    <text x="0" y="45" text-anchor="middle" fill="#98c379" font-size="14" font-family="Arial, sans-serif">动态大小 | 消除幽灵碰撞</text>
+    <text x="0" y="65" text-anchor="middle" fill="#abb2bf" font-size="13" font-family="Arial, sans-serif">地形边界、管道、跑道</text>
+  </g>
+</svg>
