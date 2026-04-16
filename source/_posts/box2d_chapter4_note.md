@@ -1,5 +1,5 @@
 ---
-title: "Box2DSharp Chapter 4 课堂笔记 - 形状系统"
+title: "【课堂笔记】Box2DSharp Chapter 4 - 形状系统"
 date: 2026-04-16
 categories:
   - 代码库
