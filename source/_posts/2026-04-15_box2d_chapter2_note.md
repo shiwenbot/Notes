@@ -1,5 +1,5 @@
 ---
-title: "Box2D Chapter 2 - 物理世界详解：World 与 WorldDef"
+title: "Box2DSharp Chapter 2 课堂笔记 - 物理世界详解：World 与 WorldDef"
 date: 2026-04-15
 categories:
   - 代码库
