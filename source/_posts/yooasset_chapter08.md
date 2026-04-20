@@ -198,7 +198,7 @@ private List<IBuildTask> GetDefaultBuildPipeline()
 }
 ```
 
-![四条构建管线对比](../diagrams/ch08-pipeline-compare.png)
+![四条构建管线对比](/img/yooasset/ch08-pipeline-compare.png)
 *图 8-1：四条构建管线任务对比*
 
 从图中可以看出，ESBP 跳过了实际的构建、验证、加密等耗时操作，只保留了核心的映射和清单生成逻辑。这使得它在编辑器模式下能快速完成"伪构建"，让开发者无需等待完整打包就能测试资源流程。
@@ -395,7 +395,7 @@ public EBuildinFileCopyOption BuildinFileCopyOption = EBuildinFileCopyOption.Non
 
 `TaskCopyBuildinFiles` 根据这个策略，将指定的 Bundle 从构建产物拷贝到 `StreamingAssets` 目录，确保首包资源随 App 一起发布。
 
-![构建产物目录布局](../diagrams/ch08-build-output.png)
+![构建产物目录布局](/img/yooasset/ch08-build-output.png)
 *图 8-2：构建产物目录布局*
 
 从图中可以看出，构建产物既包含用于远程更新的版本包目录，也包含用于首包部署的 StreamingAssets 目录。开发者可以通过 `BuildinFileCopyOption` 精确控制哪些资源需要内置，从而在首包大小和更新灵活性之间找到平衡。

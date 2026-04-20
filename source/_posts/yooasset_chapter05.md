@@ -180,7 +180,7 @@ private enum ESteps
 4. **CheckInitResult**：检查当前文件系统的初始化结果，如果成功则继续下一个，否则失败。
 5. **Done**：所有文件系统初始化完成，标记操作结束。
 
-![ResourcePackage 初始化流程](../diagrams/ch05-init-flow.png)
+![ResourcePackage 初始化流程](/img/yooasset/ch05-init-flow.png)
 
 *图 5-1：ResourcePackage 初始化流程*
 

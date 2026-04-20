@@ -289,7 +289,7 @@ public UnityDownloadFileOperation DownloadFileAsync(PackageBundle bundle, string
 
 这段代码还展示了下载策略的三分支逻辑：本地文件使用 `UnityDownloadLocalFileOperation`，大文件使用断点续传，小文件使用普通下载。`ResumeDownloadMinimumSize` 默认为 1MB，这个阈值可以根据项目需求调整。太小会导致频繁创建临时文件，太大会失去断点续传的优势。
 
-![Bundle 下载流程](../diagrams/ch04-download-flow.png)
+![Bundle 下载流程](/img/yooasset/ch04-download-flow.png)
 
 *图 4-1：Bundle 下载完整流程*
 

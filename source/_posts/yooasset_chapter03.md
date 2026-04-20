@@ -297,7 +297,7 @@ public virtual bool NeedImport(PackageBundle bundle)
 
 Web 远程文件系统不需要判断文件归属和存在性，因为 UnityWebRequest 可以直接请求任意 URL，成功与否由网络请求结果决定。所有谓词返回 true 或 false 的固定值，简化了 WebGL 平台的文件系统协作逻辑——它总是直接尝试加载，由加载操作本身处理失败情况。
 
-![文件系统选型矩阵](../diagrams/ch03-filesystem-matrix.png)
+![文件系统选型矩阵](/img/yooasset/ch03-filesystem-matrix.png)
 *图 3-1：六种文件系统选型矩阵*
 
 这个矩阵对比了六种文件系统在关键谓词上的返回值差异，以及它们的典型使用场景。可以看到，不同文件系统的设计哲学差异明显：内置文件系统强调"精确归属"，缓存文件系统强调"保底兜底"，Web 文件系统强调"简单直接"。
@@ -423,7 +423,7 @@ public override FSLoadSceneOperation LoadSceneOperation(AssetInfo assetInfo, Loa
 
 这些操作类封装了 Unity 原生的 AssetBundle.LoadAssetAsync 等 API，提供统一的异步操作接口。不同子类的关键差异在于卸载行为：RawBundleResult 和 VirtualBundleResult 不需要卸载 AssetBundle，因为它们根本不持有 AssetBundle 对象。
 
-![BundleResult 类型层次](../diagrams/ch03-bundle-result.png)
+![BundleResult 类型层次](/img/yooasset/ch03-bundle-result.png)
 *图 3-2：BundleResult 类型层次结构*
 
 这个层次结构展示了三种 BundleResult 的继承关系和职责分工。AssetBundleResult 处理真正的 AssetBundle，RawBundleResult 处理原始文件（如 JSON、二进制配置），VirtualBundleResult 则用于编辑器模式的虚拟加载（直接从 AssetDatabase 加载，不经过 AssetBundle）。

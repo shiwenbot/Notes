@@ -91,7 +91,7 @@ internal void UpdateOperation()
 }
 ```
 
-![AsyncOperationBase 状态机](../diagrams/ch02-state-machine.png)
+![AsyncOperationBase 状态机](/img/yooasset/ch02-state-machine.png)
 *图 2-1：AsyncOperationBase 状态机流转*
 
 ## 双队列与帧循环
@@ -172,7 +172,7 @@ public static void Update()
 
 执行阶段会检查 `IsBusy`，如果时间片用完就立即停止更新。这个机制后面会详细讲。
 
-![OperationSystem 帧循环](../diagrams/ch02-update-cycle.png)
+![OperationSystem 帧循环](/img/yooasset/ch02-update-cycle.png)
 *图 2-2：OperationSystem 三阶段帧循环*
 
 ## 优先级与时间片

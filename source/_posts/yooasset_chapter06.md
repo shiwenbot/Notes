@@ -112,7 +112,7 @@ OperationSystem.StartOperation(PackageName, provider);
 
 这种设计的优势在于，Provider 的创建和启动是分离的。创建时只是构建对象并加入字典，而启动时才会触发真正的异步加载流程。这为后续的优先级调整、批量控制等操作留下了空间。
 
-![资源加载调用链](../diagrams/ch06-load-chain.png)
+![资源加载调用链](/img/yooasset/ch06-load-chain.png)
 
 *图 6-1：资源加载调用链时序图*
 
@@ -274,7 +274,7 @@ RefCount 的生命周期分为四个阶段：
 
 **销毁阶段**：ResourceManager 会定期检查所有 Provider 的状态，当 RefCount 为零且不在加载中时，会调用 `DestroyProvider` 销毁 Provider。
 
-![Handle 引用计数](../diagrams/ch06-refcount.png)
+![Handle 引用计数](/img/yooasset/ch06-refcount.png)
 
 *图 6-2：Handle 引用计数生命周期*
 
