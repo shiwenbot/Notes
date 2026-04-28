@@ -1,5 +1,5 @@
 ---
-title: "Chapter 9 - Parameters（参数传递机制详解）"
+title: "【课堂笔记】CLR Chapter 9 - Parameters"
 date: 2026-04-28
 categories:
   - 书籍
