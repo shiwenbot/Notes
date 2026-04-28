@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 10 - Properties"
+title: "【课堂笔记】CLR via C# Chapter 10 - Properties"
 date: 2026-04-28
 categories:
   - 书籍

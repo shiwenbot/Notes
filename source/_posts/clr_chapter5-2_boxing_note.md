@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 5-2 - Boxing"
+title: "【课堂笔记】CLR via C# Chapter 5-2 - Boxing"
 date: 2026-03-31
 categories:
   - 书籍

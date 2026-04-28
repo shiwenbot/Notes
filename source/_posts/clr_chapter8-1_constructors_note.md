@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 8-1 - Constructors"
+title: "【课堂笔记】CLR via C# Chapter 8-1 - Constructors"
 date: 2026-04-01
 categories:
   - 书籍

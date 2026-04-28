@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 2-2 - Building & Packaging"
+title: "【课堂笔记】CLR via C# Chapter 2-2 - Building & Packaging"
 date: 2026-03-30
 categories:
   - 书籍

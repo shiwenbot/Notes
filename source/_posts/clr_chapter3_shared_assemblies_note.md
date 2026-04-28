@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 3 - Shared Assemblies"
+title: "【课堂笔记】CLR via C# Chapter 3 - Shared Assemblies"
 date: 2026-03-30
 categories:
   - 书籍

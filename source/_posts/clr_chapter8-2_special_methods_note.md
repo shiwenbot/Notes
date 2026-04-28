@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 8-2 - Special Methods"
+title: "【课堂笔记】CLR via C# Chapter 8-2 - Special Methods"
 date: 2026-04-02
 categories:
   - 书籍

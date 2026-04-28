@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 9 - Parameters"
+title: "【课堂笔记】CLR via C# Chapter 9 - Parameters"
 date: 2026-04-28
 categories:
   - 书籍

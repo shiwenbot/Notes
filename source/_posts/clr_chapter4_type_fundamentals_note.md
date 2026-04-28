@@ -1,5 +1,5 @@
 ---
-title: "【课堂笔记】CLR Chapter 4 - Type Fundamentals"
+title: "【课堂笔记】CLR via C# Chapter 4 - Type Fundamentals"
 date: 2026-03-30
 categories:
   - 书籍
