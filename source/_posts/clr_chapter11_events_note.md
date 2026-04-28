@@ -4,7 +4,7 @@ date: 2026-04-28
 categories:
   - 书籍
 tags:
-  - CLR-via-C
+  - CLR via C#
 description: "事件的核心概念、编译本质（委托字段+add/remove）、线程安全触发、显式实现事件与内存优化"
 ---
 
