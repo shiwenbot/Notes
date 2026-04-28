@@ -5,6 +5,7 @@ categories:
   - 视频
 tags:
   - GDC
+  - YouTube
 description: "GDC 2025 Assassin's Creed Shadows 渲染技术分析"
 ---
 
