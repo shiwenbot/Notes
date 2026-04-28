@@ -70,5 +70,6 @@ var showSubCards = subs && subs.length > 0;
   <% }) %>
 </div>
 
-<% } %>
+<% } else { %>
 <%- partial('_partials/archive-list.ejs', { params: { key: page.layout, postTotal: cat ? cat.posts.length : 0 } }) %>
+<% } %>
