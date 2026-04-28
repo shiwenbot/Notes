@@ -1,0 +1,94 @@
+# Hexo Theme Fluid Config
+# 参考 https://alex-rachel.github.io/ 的风格
+
+# 全局
+favicon: /img/favicon.png
+apple_touch_icon: /img/favicon.png
+tab_title_separator: " - "
+force_https: false
+
+# 代码块
+code:
+  copy_btn: true
+  language:
+    enable: true
+    default: "TEXT"
+  highlight:
+    enable: true
+    line_number: true
+    lib: "highlightjs"
+    highlightjs:
+      style: "github gist"
+      style_dark: "dark"
+
+# 打字机效果
+fun_features:
+  typing:
+    enable: false
+
+# 主题色
+theme_color:
+  enable: true
+  main: "#49b1f5"
+  paginator: "#00c4b6"
+  button_hover: "#ff7242"
+  text_selection: "#00c4b6"
+  link_color: "#99a9bf"
+  hr_color: "#a4d8fa"
+
+# 顶部导航栏
+navbar:
+  blog_title: "我的笔记"
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "书籍", link: "/categories/书籍/", icon: "iconfont icon-book" }
+    - { key: "代码库", link: "/categories/代码库/", icon: "iconfont icon-code" }
+    - { key: "视频", link: "/categories/视频/", icon: "iconfont icon-video" }
+    - { key: "文章", link: "/categories/文章/", icon: "iconfont icon-file-text" }
+
+# 首页
+index:
+  banner_img: /img/default.png
+  slogan:
+    enable: true
+    text: "造个绿洲玩玩"
+
+# 文章页
+post:
+  banner_img: /img/default.png
+  default_top_img: false
+
+# 侧边栏
+sidebar:
+  left:
+    enable: true
+  right:
+    enable: true
+    sticky: true
+
+# 评论（暂时关闭）
+comments:
+  enable: false
+
+# 图片放大
+image_zoom:
+  enable: true
+
+# 统计（暂时关闭）
+statistics:
+  enable: false
+
+# 暗色模式
+dark_mode:
+  enable: true
+  default: "auto"
+
+# 关于页
+about:
+  avatar: /img/avatar.png
+  name: "shiwenbot"
+  intro: "造个绿洲玩玩"
+
+# 自定义字体
+font:
+  enable: false

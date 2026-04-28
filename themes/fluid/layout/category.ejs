@@ -1,0 +1,75 @@
+<%
+page.layout = "category"
+page.title = [__('category.title'), page.category].join(" - ")
+page.subtitle = [__('category.subtitle'), page.category].join(" - ")
+page.banner_img = theme.category.banner_img
+page.banner_img_height = theme.category.banner_img_height
+page.banner_mask_alpha = theme.category.banner_mask_alpha
+
+var cat = site.categories.find({name: page.category}).filter(cat => cat.length).data[0]
+
+// Sub-category tag mapping
+var subCategoryMap = {
+  '书籍': [
+    { name: 'CLR via C#', tag: 'CLR-via-C', icon: '📖', desc: 'C# 运行时深入理解' },
+    { name: 'Direct3D', tag: 'Direct3D', icon: '🎮', desc: 'Direct3D 角色动画' }
+  ],
+  '代码库': [
+    { name: 'ET MOBA', tag: 'ET-MOBA', icon: '⚔️', desc: 'ET 框架 MOBA 游戏实战' },
+    { name: 'Box2D', tag: 'Box2D', icon: '🧱', desc: 'Box2DSharp 物理引擎实战' },
+    { name: 'YooAsset', tag: 'YooAsset', icon: '📦', desc: 'Unity 资源管理系统深度解析' }
+  ],
+  '视频': [
+    { name: 'YouTube', tag: 'YouTube', icon: '🎬', desc: 'YouTube 技术分析笔记' }
+  ]
+};
+
+var subs = subCategoryMap[page.category] || null;
+var showSubCards = subs && subs.length > 0;
+%>
+
+<% if (showSubCards) { %>
+<style>
+.sub-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.sub-cat-card {
+  display: block;
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--board-bg, #fff);
+  border: 1px solid rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.sub-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  color: inherit;
+  text-decoration: none;
+}
+.sub-cat-card .sc-icon { font-size: 32px; margin-bottom: 12px; }
+.sub-cat-card .sc-name { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+.sub-cat-card .sc-desc { font-size: 14px; color: #858585; }
+</style>
+
+<div class="sub-cat-grid">
+  <% subs.forEach(function(sub) { %>
+    <a class="sub-cat-card" href="<%= url_for('/tags/' + sub.tag + '/') %>">
+      <div class="sc-icon"><%= sub.icon %></div>
+      <div class="sc-name"><%= sub.name %></div>
+      <div class="sc-desc"><%= sub.desc %></div>
+    </a>
+  <% }) %>
+</div>
+
+<% } else { %>
+<%- partial('_partials/archive-list.ejs', { params: { key: page.layout, postTotal: cat ? cat.posts.length : 0 } }) %>
+<% } %>

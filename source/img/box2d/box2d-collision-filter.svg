@@ -1,0 +1,141 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+      .label { font-family: 'Inter', sans-serif; font-size: 14px; fill: #6B5D52; font-weight: 500; }
+      .title { font-family: 'Inter', sans-serif; font-size: 20px; fill: #3D3229; font-weight: 600; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; fill: #8B7D72; font-weight: 400; }
+      .code { font-family: 'SF Mono', 'Consolas', monospace; font-size: 12px; fill: #5C4E45; }
+      .bit-label { font-family: 'Inter', sans-serif; font-size: 11px; fill: #FFFFFF; font-weight: 500; }
+      .obj-label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #3D3229; font-weight: 600; }
+      .obj-desc { font-family: 'Inter', sans-serif; font-size: 11px; fill: #6B5D52; }
+    </style>
+    <linearGradient id="player" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7BA574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A9563;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="enemy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A57474;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#956363;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wall" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7492A5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#638295;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pickup" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C4956A;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#3D3229" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#F8F6F3"/>
+
+  <!-- Left Layer Label -->
+  <text x="40" y="350" class="label" transform="rotate(-90, 40, 350)" text-anchor="middle">COLLISION SYSTEM</text>
+
+  <!-- Title -->
+  <text x="120" y="60" class="title">碰撞过滤机制</text>
+  <text x="120" y="85" class="subtitle">CategoryBits + MaskBits + GroupIndex 三重控制碰撞响应</text>
+
+  <!-- Three Filter Properties -->
+  <g transform="translate(120, 130)">
+    <!-- CategoryBits -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+      <text x="20" y="30" class="label" font-size="13">CategoryBits（我是谁）</text>
+      <line x1="20" y1="45" x2="300" y2="45" stroke="#E8E4E0" stroke-width="1"/>
+      <text x="20" y="70" class="obj-desc" font-size="12">定义物体属于哪些类别</text>
+      <text x="20" y="90" class="obj-desc" font-size="11" fill="#8B7D72">• 每个bit代表一个类别</text>
+      <text x="20" y="108" class="obj-desc" font-size="11" fill="#8B7D72">• 可设置多个类别（bitwise OR）</text>
+      <text x="20" y="126" class="code" font-size="11">0x0001 = Player</text>
+    </g>
+
+    <!-- MaskBits -->
+    <g transform="translate(360, 0)">
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+      <text x="20" y="30" class="label" font-size="13">MaskBits（我跟谁撞）</text>
+      <line x1="20" y1="45" x2="300" y2="45" stroke="#E8E4E0" stroke-width="1"/>
+      <text x="20" y="70" class="obj-desc" font-size="12">定义物体能与哪些类别碰撞</text>
+      <text x="20" y="90" class="obj-desc" font-size="11" fill="#8B7D72">• 0表示不与任何物体碰撞</text>
+      <text x="20" y="108" class="obj-desc" font-size="11" fill="#8B7D72">• 0xFFFF表示与所有物体碰撞</text>
+      <text x="20" y="126" class="code" font-size="11">0xFFFF = All</text>
+    </g>
+
+    <!-- GroupIndex -->
+    <g transform="translate(720, 0)">
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+      <text x="20" y="30" class="label" font-size="13">GroupIndex（组规则）</text>
+      <line x1="20" y1="45" x2="300" y2="45" stroke="#E8E4E0" stroke-width="1"/>
+      <text x="20" y="70" class="obj-desc" font-size="12">优先级高于 Category/Mask</text>
+      <text x="20" y="90" class="obj-desc" font-size="11" fill="#8B7D72">• 正数：同组必定碰撞</text>
+      <text x="20" y="108" class="obj-desc" font-size="11" fill="#8B7D72">• 负数：同组绝不碰撞</text>
+      <text x="20" y="126" class="code" font-size="11">-1 = Never collide</text>
+    </g>
+  </g>
+
+  <!-- Collision Matrix -->
+  <g transform="translate(120, 310)">
+    <text x="0" y="-15" class="label" font-size="16">碰撞检测矩阵示例</text>
+
+    <!-- Headers -->
+    <text x="100" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">物体</text>
+    <text x="200" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">Category</text>
+    <text x="320" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">Mask</text>
+    <text x="440" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">Group</text>
+    <text x="560" y="15" class="obj-label" text-anchor="middle" fill="#8B7D72" font-size="11">碰撞对象</text>
+
+    <!-- Player Row -->
+    <g transform="translate(0, 35)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(123,165,116,0.1)"/>
+      <circle cx="80" cy="25" r="18" fill="url(#player)"/>
+      <text x="80" y="30" class="bit-label" text-anchor="middle">P</text>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0001</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0xFFFF</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">全部</text>
+    </g>
+
+    <!-- Enemy Row -->
+    <g transform="translate(0, 95)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(165,116,116,0.1)"/>
+      <circle cx="80" cy="25" r="18" fill="url(#enemy)"/>
+      <text x="80" y="30" class="bit-label" text-anchor="middle">E</text>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0002</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0xFFFF</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">全部</text>
+    </g>
+
+    <!-- Wall Row -->
+    <g transform="translate(0, 155)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(116,146,165,0.1)"/>
+      <rect x="62" y="7" width="36" height="36" rx="4" fill="url(#wall)"/>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0004</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0xFFFF</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">全部</text>
+    </g>
+
+    <!-- Pickup Row -->
+    <g transform="translate(0, 215)">
+      <rect x="0" y="0" width="700" height="50" rx="8" fill="rgba(212,165,116,0.1)"/>
+      <polygon points="80,10 92,35 68,35" fill="url(#pickup)"/>
+      <text x="200" y="28" class="code" text-anchor="middle">0x0008</text>
+      <text x="320" y="28" class="code" text-anchor="middle">0x0001</text>
+      <text x="440" y="28" class="code" text-anchor="middle">0</text>
+      <text x="560" y="28" class="obj-desc">仅 Player</text>
+    </g>
+  </g>
+
+  <!-- Collision Formula -->
+  <g transform="translate(120, 610)">
+    <rect x="0" y="0" width="860" height="60" rx="12" fill="#FFFFFF" stroke="#D4A574" stroke-width="2"/>
+    <text x="20" y="25" class="label" font-size="13" fill="#D4A574">📐 碰撞判定公式</text>
+    <text x="20" y="48" class="code" font-size="13">(A.CategoryBits &amp; B.MaskBits) &amp;&amp; (B.CategoryBits &amp; A.MaskBits) &amp;&amp; (A.GroupIndex ≠ 0 || A.GroupIndex == B.GroupIndex)</text>
+  </g>
+
+</svg>

@@ -1,0 +1,124 @@
+<svg width="1200" height="650" viewBox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      .label { font-family: 'Inter', sans-serif; font-size: 14px; fill: #6B5D52; font-weight: 500; }
+      .title { font-family: 'Inter', sans-serif; font-size: 24px; fill: #3D3229; font-weight: 700; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; fill: #8B7D72; font-weight: 400; }
+      .api-title { font-family: 'Inter', sans-serif; font-size: 22px; fill: #FFFFFF; font-weight: 700; }
+      .step-title { font-family: 'Inter', sans-serif; font-size: 16px; fill: #FFFFFF; font-weight: 600; }
+      .step-desc { font-family: 'Inter', sans-serif; font-size: 13px; fill: rgba(255,255,255,0.85); font-weight: 400; }
+      .code { font-family: 'Monaco', 'Consolas', monospace; font-size: 12px; fill: #2D5F3F; font-weight: 500; }
+      .note { font-family: 'Inter', sans-serif; font-size: 11px; fill: #5C4E45; font-weight: 400; }
+      .arrow { stroke: #A89A8F; stroke-width: 2; fill: none; }
+    </style>
+
+    <linearGradient id="forceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="impulseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#3D3229" flood-opacity:0.12"/>
+    </filter>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#A89A8F"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="650" fill="#F8F6F3"/>
+
+  <text x="60" y="50" class="title">ApplyForce vs ApplyImpulse</text>
+  <text x="60" y="75" class="subtitle">力的延迟生效 vs 冲量的立即生效——本质区别在"写到哪里"</text>
+
+  <!-- ApplyForce -->
+  <g transform="translate(60, 110)">
+    <rect x="0" y="0" width="500" height="480" rx="16" fill="url(#forceGrad)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="500" height="70" rx="16" fill="rgba(0,0,0,0.2)"/>
+    <rect x="0" y="50" width="500" height="20" fill="rgba(0,0,0,0.2)"/>
+
+    <text x="250" y="42" class="api-title" text-anchor="middle">ApplyForce</text>
+    <text x="250" y="62" class="step-desc" text-anchor="middle" fill="rgba(255,255,255,0.9)">持续施加力</text>
+
+    <g transform="translate(30, 100)">
+      <!-- Step 1 -->
+      <rect x="0" y="0" width="440" height="80" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="20" y="25" class="step-title">Step 1: 累加到 BodySim.Force</text>
+      <text x="20" y="50" class="step-desc">bodySim.Force += force</text>
+      <text x="20" y="68" class="step-desc" font-size="11" fill="rgba(255,255,255,0.7)">写入 BodySim 的力累加器</text>
+
+      <!-- Arrow -->
+      <path d="M 220 90 L 220 110" class="arrow" marker-end="url(#arrowhead)"/>
+
+      <!-- Step 2 -->
+      <rect x="0" y="120" width="440" height="80" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="20" y="145" class="step-title">Step 2: 等待下一步解算</text>
+      <text x="20" y="170" class="step-desc">力暂时存储，不立即改变速度</text>
+      <text x="20" y="188" class="step-desc" font-size="11" fill="rgba(255,255,255,0.7)">延迟到下一次 world.Step()</text>
+
+      <!-- Arrow -->
+      <path d="M 220 210 L 220 230" class="arrow" marker-end="url(#arrowhead)"/>
+
+      <!-- Step 3 -->
+      <rect x="0" y="240" width="440" height="80" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="20" y="265" class="step-title">Step 3: 计算加速度</text>
+      <text x="20" y="290" class="step-desc">a = F × InvMass</text>
+      <text x="20" y="308" class="step-desc" font-size="11" fill="rgba(255,255,255,0.7)">积分阶段根据力计算加速度</text>
+
+      <!-- Arrow -->
+      <path d="M 220 330 L 220 350" class="arrow" marker-end="url(#arrowhead)"/>
+
+      <!-- Step 4 -->
+      <rect x="0" y="360" width="440" height="80" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="20" y="385" class="step-title">Step 4: 更新速度</text>
+      <text x="20" y="410" class="step-desc">v += a × dt</text>
+      <text x="20" y="428" class="step-desc" font-size="11" fill="rgba(255,255,255,0.7)">速度才会真正改变</text>
+    </g>
+  </g>
+
+  <!-- ApplyImpulse -->
+  <g transform="translate(640, 110)">
+    <rect x="0" y="0" width="500" height="480" rx="16" fill="url(#impulseGrad)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="500" height="70" rx="16" fill="rgba(0,0,0,0.2)"/>
+    <rect x="0" y="50" width="500" height="20" fill="rgba(0,0,0,0.2)"/>
+
+    <text x="250" y="42" class="api-title" text-anchor="middle">ApplyImpulse</text>
+    <text x="250" y="62" class="step-desc" text-anchor="middle" fill="rgba(255,255,255,0.9)">瞬时冲量</text>
+
+    <g transform="translate(30, 100)">
+      <!-- Step 1 -->
+      <rect x="0" y="0" width="440" height="100" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="20" y="25" class="step-title">Step 1: 直接改 BodyState.LinearVelocity</text>
+      <text x="20" y="50" class="step-desc">v += impulse × InvMass</text>
+      <text x="20" y="75" class="step-desc" font-size="11" fill="rgba(255,255,255,0.7)">立即写入 BodyState 的速度字段</text>
+
+      <!-- Arrow -->
+      <path d="M 220 110 L 220 150" class="arrow" marker-end="url(#arrowhead)"/>
+
+      <!-- Step 2 -->
+      <rect x="0" y="160" width="440" height="80" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="20" y="185" class="step-title">Step 2: 立即生效</text>
+      <text x="20" y="210" class="step-desc">速度已经改变，无需等待解算</text>
+      <text x="20" y="228" class="step-desc" font-size="11" fill="rgba(255,255,255,0.7)">下一次 world.Step() 会直接用新速度</text>
+
+      <!-- Highlight Box -->
+      <rect x="0" y="260" width="440" height="100" rx="8" fill="rgba(255,255,255,0.25)"/>
+      <text x="20" y="285" class="step-title">关键差异</text>
+      <text x="20" y="310" class="step-desc">❌ 不经过力累加器</text>
+      <text x="20" y="330" class="step-desc">❌ 不等待下一次解算</text>
+      <text x="20" y="350" class="step-desc">✓ 直接操作速度，零延迟</text>
+    </g>
+  </g>
+
+  <!-- Bottom Comparison -->
+  <g transform="translate(60, 610)">
+    <rect x="0" y="0" width="1080" height="35" rx="8" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="1"/>
+    <text x="20" y="22" class="note">ApplyForce: 延迟生效（适合持续力，如风、推力）| ApplyImpulse: 立即生效（适合瞬时力，如爆炸、跳跃）</text>
+  </g>
+</svg>

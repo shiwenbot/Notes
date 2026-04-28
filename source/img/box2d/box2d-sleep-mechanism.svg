@@ -1,0 +1,118 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      .label { font-family: 'Inter', sans-serif; font-size: 14px; fill: #6B5D52; font-weight: 500; }
+      .title { font-family: 'Inter', sans-serif; font-size: 24px; fill: #3D3229; font-weight: 700; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; fill: #8B7D72; font-weight: 400; }
+      .state-title { font-family: 'Inter', sans-serif; font-size: 18px; fill: #FFFFFF; font-weight: 700; }
+      .state-desc { font-family: 'Inter', sans-serif; font-size: 13px; fill: rgba(255,255,255,0.85); font-weight: 400; }
+      .condition { font-family: 'Inter', sans-serif; font-size: 12px; fill: #5C4E45; font-weight: 500; }
+      .note { font-family: 'Inter', sans-serif; font-size: 11px; fill: #5C4E45; font-weight: 400; }
+      .arrow { stroke: #A89A8F; stroke-width: 2; fill: none; }
+    </style>
+
+    <linearGradient id="awakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="sleepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B7280;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4B5563;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#3D3229" flood-opacity:0.12"/>
+    </filter>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#A89A8F"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="600" fill="#F8F6F3"/>
+
+  <text x="60" y="50" class="title">睡眠机制状态转换</text>
+  <text x="60" y="75" class="subtitle">性能优化的杀手锏——让静止的刚体"睡着"，跳过计算</text>
+
+  <!-- Awake State -->
+  <g transform="translate(80, 150)">
+    <rect x="0" y="0" width="280" height="200" rx="16" fill="url(#awakeGrad)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="280" height="60" rx="16" fill="rgba(0,0,0,0.2)"/>
+    <rect x="0" y="40" width="280" height="20" fill="rgba(0,0,0,0.2)"/>
+
+    <text x="140" y="38" class="state-title" text-anchor="middle">Awake (清醒)</text>
+    <text x="140" y="55" class="state-desc" text-anchor="middle" font-size="11">正常参与物理模拟</text>
+
+    <g transform="translate(20, 80)">
+      <text x="0" y="0" class="state-desc" font-size="12">✓ 积分阶段：计算力→加速度→速度</text>
+      <text x="0" y="25" class="state-desc" font-size="12">✓ 碰撞检测：宽相位+窄相位</text>
+      <text x="0" y="50" class="state-desc" font-size="12">✓ 约束求解：处理碰撞约束</text>
+      <text x="0" y="75" class="state-desc" font-size="12">✓ 位置更新：每帧都在动</text>
+      <text x="0" y="100" class="state-desc" font-size="12" fill="rgba(255,255,255,0.7)">CPU 开销：高</text>
+    </g>
+  </g>
+
+  <!-- Sleep State -->
+  <g transform="translate(840, 150)">
+    <rect x="0" y="0" width="280" height="200" rx="16" fill="url(#sleepGrad)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="280" height="60" rx="16" fill="rgba(0,0,0,0.2)"/>
+    <rect x="0" y="40" width="280" height="20" fill="rgba(0,0,0,0.2)"/>
+
+    <text x="140" y="38" class="state-title" text-anchor="middle">Sleep (睡眠)</text>
+    <text x="140" y="55" class="state-desc" text-anchor="middle" font-size="11">跳过物理计算</text>
+
+    <g transform="translate(20, 80)">
+      <text x="0" y="0" class="state-desc" font-size="12">✗ 积分阶段：跳过</text>
+      <text x="0" y="25" class="state-desc" font-size="12">✗ 碰撞检测：跳过</text>
+      <text x="0" y="50" class="state-desc" font-size="12">✗ 约束求解：跳过</text>
+      <text x="0" y="75" class="state-desc" font-size="12">✗ 位置更新：保持不变</text>
+      <text x="0" y="100" class="state-desc" font-size="12" fill="rgba(255,255,255,0.7)">CPU 开销：几乎为零</text>
+    </g>
+  </g>
+
+  <!-- Transition: Awake -> Sleep -->
+  <g transform="translate(420, 180)">
+    <rect x="0" y="0" width="200" height="140" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+    <text x="100" y="25" class="condition" text-anchor="middle" font-weight="600">入睡条件</text>
+    <line x1="20" y1="35" x2="180" y2="35" stroke="#E8E4E0" stroke-width="1"/>
+
+    <text x="20" y="55" class="condition" font-size="11">• 速度低于阈值</text>
+    <text x="20" y="75" class="condition" font-size="11">• 持续一段时间</text>
+    <text x="20" y="95" class="condition" font-size="11">• EnableSleep = true</text>
+    <text x="20" y="120" class="note" fill="#8B7D72">例：地面上的箱子不动了</text>
+
+    <!-- Arrow to Sleep -->
+    <path d="M 200 70 L 280 70" class="arrow" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Transition: Sleep -> Awake -->
+  <g transform="translate(420, 280)">
+    <rect x="0" y="0" width="200" height="160" rx="12" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="2"/>
+    <text x="100" y="25" class="condition" text-anchor="middle" font-weight="600">唤醒条件</text>
+    <line x1="20" y1="35" x2="180" y2="35" stroke="#E8E4E0" stroke-width="1"/>
+
+    <text x="20" y="55" class="condition" font-size="11">1. 施加力/冲量 (wake=true)</text>
+    <text x="20" y="80" class="condition" font-size="11">2. 其他刚体碰撞</text>
+    <text x="20" y="105" class="condition" font-size="11">3. 手动唤醒 (SetAwake)</text>
+    <text x="20" y="135" class="note" fill="#8B7D72">例：玩家踩到箱子，爆炸</text>
+
+    <!-- Arrow from Sleep -->
+    <path d="M 280 80 L 200 80" class="arrow" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Performance Note -->
+  <g transform="translate(80, 420)">
+    <rect x="0" y="0" width="1040" height="80" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+    <text x="20" y="25" class="condition" font-size="13" font-weight="600" fill="#059669">性能提升原理</text>
+    <text x="20" y="50" class="note" font-size="12">睡眠的刚体跳过了积分、碰撞检测、约束求解三大阶段，CPU 开销几乎为零。适合场景：地面箱子、静止障碍物、不动的敌人。</text>
+    <text x="20" y="68" class="note" font-size="12" fill="#DC2626">注意：玩家角色、敌人 AI、频繁移动物体应设置 EnableSleep = false，避免输入延迟。</text>
+  </g>
+
+  <!-- Bottom Note -->
+  <g transform="translate(80, 520)">
+    <rect x="0" y="0" width="1040" height="40" rx="8" fill="#FFFFFF" stroke="#E8E4E0" stroke-width="1"/>
+    <text x="20" y="25" class="note">Unity 2D 对比：Rigidbody2D.SleepingMode (NeverSleep / StartAwake / StartAsleep) 机制类似</text>
+  </g>
+</svg>
