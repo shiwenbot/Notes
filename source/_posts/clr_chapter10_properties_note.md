@@ -1,6 +1,6 @@
 ---
 title: "【课堂笔记】CLR via C# Chapter 10 - Properties"
-date: 2026-04-28
+date: 2026-04-28 10:00:00
 categories:
   - 书籍
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "【课堂笔记】CLR via C# Chapter 11 - Events"
-date: 2026-04-28
+date: 2026-04-28 16:00:00
 categories:
   - 书籍
 tags:

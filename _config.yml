@@ -13,6 +13,9 @@ url: https://shiwenbot.github.io
 root: /Notes/
 permalink: :year/:month/:day/:title/
 
+index_generator:
+  order_by: -date
+
 # Directory
 source_dir: source
 public_dir: public
